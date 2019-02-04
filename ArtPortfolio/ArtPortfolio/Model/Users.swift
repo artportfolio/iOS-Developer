@@ -39,4 +39,11 @@ struct Post: Codable {
     }
 }
 
-
+//This is the real User Object; Above one is dummy one.
+struct User: Equatable, Codable {
+    var id: Int
+    var userName: String
+    var fullName: String
+    var userImgUrl: String?
+    var email: String?
+}
