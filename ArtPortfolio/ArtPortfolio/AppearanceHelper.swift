@@ -22,7 +22,7 @@ enum AppearanceHelper {
 //        UIBarButtonItem.appearance().tintColor = lambdaRed
 //        UISegmentedControl.appearance().tintColor = lambdaRed
         
-        UILabel.appearance().textColor = .textColor
+  //      UILabel.appearance().textColor = .textColor
         
         let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navBarTextColor]
         UINavigationBar.appearance().titleTextAttributes = textAttributes
@@ -59,15 +59,15 @@ enum AppearanceHelper {
 }
 
 extension UIColor {
-    static let textColor = UIColor(red: 64/255, green: 98/255, blue: 124/255, alpha: 1)
+    static let textColor = UIColor(red: 255/255, green: 252/255, blue: 163/255, alpha: 1)
     
     static let buttonBackgroundColor = UIColor(red: 103/255, green: 158/255, blue: 199/255, alpha: 1)
     
     static let buttonTextColor = UIColor(red: 255/255, green: 252/255, blue: 163/255, alpha: 1)
     
-    static let navBarTextColor = UIColor(red: 38/255, green: 57/255, blue: 61/255, alpha: 1)
+    static let navBarTextColor = UIColor(red: 255/255, green: 252/255, blue: 163/255, alpha: 1)
     
-     static let navBarTintColor = UIColor(red: 189/255, green: 186/255, blue: 121/255, alpha: 1)
+     static let navBarTintColor = UIColor(red: 38/255, green: 57/255, blue: 61/255, alpha: 1)
     
 }
 

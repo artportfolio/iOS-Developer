@@ -21,9 +21,11 @@ class LoginViewController: UIViewController {
     }
     
     private func viewAppearance(){
+        loginLabel.textColor = .textColor
         loginLabel.font = AppearanceHelper.applicationFont(with: .headline, pointSize: 15)
         AppearanceHelper.style(button: loginButton)
     }
+    
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
     }

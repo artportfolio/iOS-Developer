@@ -48,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.90980392160000001" green="0.8980392157" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Log in" id="SgU-NM-X4y"/>
@@ -78,7 +78,7 @@
             </objects>
             <point key="canvasLocation" x="6363.7681159420299" y="132.58928571428572"/>
         </scene>
-        <!--Portfolio Table View Controller-->
+        <!--Portfolios-->
         <scene sceneID="XFW-ut-Ky5">
             <objects>
                 <tableViewController id="maC-mk-s8h" customClass="PortfolioTableViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
@@ -147,6 +147,7 @@
                                     <outlet property="descriptionLabel" destination="lGi-4v-brE" id="UW4-Xx-fkf"/>
                                     <outlet property="numberOfLikesLabel" destination="NVo-nj-Gf7" id="OXU-tq-2b7"/>
                                     <outlet property="portfolioImageView" destination="Z8D-kW-TUT" id="gT6-U2-oy1"/>
+                                    <segue destination="7Sk-M8-GiP" kind="show" identifier="toDetailVC" id="U0D-Le-sN8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -155,17 +156,63 @@
                             <outlet property="delegate" destination="maC-mk-s8h" id="icc-Yy-yo2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="FWz-mO-R6P">
+                    <navigationItem key="navigationItem" title="Portfolios" id="FWz-mO-R6P">
                         <barButtonItem key="leftBarButtonItem" image="multiply" id="Q8l-dp-e5I">
                             <connections>
                                 <action selector="cancelBarButtonAction:" destination="maC-mk-s8h" id="BW1-rk-0Ab"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LKa-2C-T5e"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addBarButton" destination="LKa-2C-T5e" id="wEx-0U-XqX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NN1-Cr-dbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3952.1739130434785" y="132.58928571428572"/>
+            <point key="canvasLocation" x="2446" y="-273"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="GfG-Zw-GeR">
+            <objects>
+                <viewController id="7Sk-M8-GiP" customClass="DetailViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="94o-IB-Mdw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QBs-gz-wRc">
+                                <rect key="frame" x="20" y="120" width="374" height="308"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RiC-jF-IgF">
+                                <rect key="frame" x="20" y="436" width="374" height="246"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-k2-jmr">
+                                <rect key="frame" x="192" y="711" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editButtonPressed:" destination="7Sk-M8-GiP" eventType="touchUpInside" id="deh-Zh-43c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="KSU-p5-ECU"/>
+                    </view>
+                    <connections>
+                        <outlet property="artDescriptionTextView" destination="RiC-jF-IgF" id="J45-gO-5On"/>
+                        <outlet property="artImageView" destination="QBs-gz-wRc" id="Nfm-hr-szH"/>
+                        <outlet property="editButton" destination="0S4-k2-jmr" id="6hp-pi-yX5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rWN-uD-Gy2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3176.811594202899" y="-267.1875"/>
         </scene>
         <!--Artful-->
         <scene sceneID="YJd-0t-6aP">
@@ -211,7 +258,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.90980392156862744" green="0.89803921568627454" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.32156862745098036" green="0.48627450980392156" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="oyI-6z-ysT"/>
                     </view>
                     <navigationItem key="navigationItem" title="Artful" id="Q7k-cj-XPo"/>
@@ -243,7 +290,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpN-SQ-BHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2208.695652173913" y="132.58928571428572"/>
+            <point key="canvasLocation" x="990" y="173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nx0-Mp-6iG">
@@ -282,7 +329,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXQ-99-Czx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3040.579710144928" y="132.58928571428572"/>
+            <point key="canvasLocation" x="1694" y="173"/>
         </scene>
     </scenes>
     <resources>

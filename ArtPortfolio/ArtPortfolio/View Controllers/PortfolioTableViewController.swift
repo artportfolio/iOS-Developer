@@ -10,6 +10,10 @@ import UIKit
 
 class PortfolioTableViewController: UITableViewController {
     
+    @IBOutlet weak var addBarButton: UIBarButtonItem!
+    
+    
+    
     var portfolioController = PortfolioController()
     
     let spinner = UIActivityIndicatorView(style: .gray)
@@ -21,6 +25,9 @@ class PortfolioTableViewController: UITableViewController {
 
         fetchPosts()
         tableView.backgroundView = spinner
+        
+        
+        addBarButton.isEnabled = false
         
     }
 
@@ -55,15 +62,23 @@ class PortfolioTableViewController: UITableViewController {
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toDetailVC" {
+            let destinationVC = segue.destination as? DetailViewController
+            destinationVC?.portfolioController = portfolioController
+            
+            guard let indexpath = tableView.indexPathForSelectedRow else {return}
+            let portfolio = portfolioController.artPortfolioUsers[indexpath.row]
+            
+            destinationVC?.portfolio = portfolio
+        }
     }
-    */
+  
+   
     @IBAction func cancelBarButtonAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
