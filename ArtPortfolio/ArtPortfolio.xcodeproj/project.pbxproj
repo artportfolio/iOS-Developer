@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		7A74C590220890A700665E4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C58F220890A700665E4A /* AppDelegate.swift */; };
-		7A74C592220890A700665E4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C591220890A700665E4A /* ViewController.swift */; };
-		7A74C595220890A700665E4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C593220890A700665E4A /* Main.storyboard */; };
 		7A74C597220890AB00665E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C596220890AB00665E4A /* Assets.xcassets */; };
 		7A74C59A220890AB00665E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C598220890AB00665E4A /* LaunchScreen.storyboard */; };
+		7A74C5C32208A3B700665E4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C5C22208A3B700665E4A /* Main.storyboard */; };
+		7A74C5C72208A41A00665E4A /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5C52208A41A00665E4A /* Users.swift */; };
+		7A74C5C82208A41A00665E4A /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5C62208A41A00665E4A /* Portfolio.swift */; };
+		7A74C5CB2208A43600665E4A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5CA2208A43600665E4A /* LoginViewController.swift */; };
+		7A74C5CF2208A44500665E4A /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5CC2208A44400665E4A /* PortfolioTableViewCell.swift */; };
+		7A74C5D12208A44500665E4A /* PortfolioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */; };
+		7A74C5D32208A4D200665E4A /* PortfolioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5D22208A4D200665E4A /* PortfolioController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7A74C58C220890A700665E4A /* ArtPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A74C58F220890A700665E4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7A74C591220890A700665E4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7A74C594220890A700665E4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A74C596220890AB00665E4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A74C599220890AB00665E4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A74C59B220890AB00665E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A74C5C22208A3B700665E4A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		7A74C5C52208A41A00665E4A /* Users.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		7A74C5C62208A41A00665E4A /* Portfolio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
+		7A74C5CA2208A43600665E4A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7A74C5CC2208A44400665E4A /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
+		7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewController.swift; sourceTree = "<group>"; };
+		7A74C5D22208A4D200665E4A /* PortfolioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PortfolioController.swift; path = "../../../../../Downloads/Art-Portfolio-master/Art-Portfolio/PortfolioController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +65,34 @@
 			isa = PBXGroup;
 			children = (
 				7A74C58F220890A700665E4A /* AppDelegate.swift */,
-				7A74C591220890A700665E4A /* ViewController.swift */,
-				7A74C593220890A700665E4A /* Main.storyboard */,
+				7A74C5CC2208A44400665E4A /* PortfolioTableViewCell.swift */,
+				7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */,
+				7A74C5D22208A4D200665E4A /* PortfolioController.swift */,
+				7A74C5C92208A43600665E4A /* View Controllers */,
+				7A74C5C42208A41A00665E4A /* Model */,
+				7A74C5C22208A3B700665E4A /* Main.storyboard */,
 				7A74C596220890AB00665E4A /* Assets.xcassets */,
 				7A74C598220890AB00665E4A /* LaunchScreen.storyboard */,
 				7A74C59B220890AB00665E4A /* Info.plist */,
 			);
 			path = ArtPortfolio;
+			sourceTree = "<group>";
+		};
+		7A74C5C42208A41A00665E4A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A74C5C52208A41A00665E4A /* Users.swift */,
+				7A74C5C62208A41A00665E4A /* Portfolio.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A74C5C92208A43600665E4A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A74C5CA2208A43600665E4A /* LoginViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +155,7 @@
 			files = (
 				7A74C59A220890AB00665E4A /* LaunchScreen.storyboard in Resources */,
 				7A74C597220890AB00665E4A /* Assets.xcassets in Resources */,
-				7A74C595220890A700665E4A /* Main.storyboard in Resources */,
+				7A74C5C32208A3B700665E4A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +166,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A74C592220890A700665E4A /* ViewController.swift in Sources */,
+				7A74C5C82208A41A00665E4A /* Portfolio.swift in Sources */,
+				7A74C5D12208A44500665E4A /* PortfolioTableViewController.swift in Sources */,
+				7A74C5C72208A41A00665E4A /* Users.swift in Sources */,
+				7A74C5CB2208A43600665E4A /* LoginViewController.swift in Sources */,
+				7A74C5CF2208A44500665E4A /* PortfolioTableViewCell.swift in Sources */,
+				7A74C5D32208A4D200665E4A /* PortfolioController.swift in Sources */,
 				7A74C590220890A700665E4A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,14 +179,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7A74C593220890A700665E4A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7A74C594220890A700665E4A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7A74C598220890AB00665E4A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
