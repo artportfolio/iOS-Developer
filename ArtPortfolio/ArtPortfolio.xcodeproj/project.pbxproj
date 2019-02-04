@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A09DF052208A8AE0043A1DD /* PortfolioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF042208A8AE0043A1DD /* PortfolioController.swift */; };
+		7A09DF082208AA1A0043A1DD /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A09DF072208AA1A0043A1DD /* VarelaRound-Regular.ttf */; };
+		7A09DF0A2208AAEA0043A1DD /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF092208AAEA0043A1DD /* AppearanceHelper.swift */; };
+		7A09DF0C2208ACDA0043A1DD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF0B2208ACDA0043A1DD /* WelcomeViewController.swift */; };
 		7A74C590220890A700665E4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C58F220890A700665E4A /* AppDelegate.swift */; };
 		7A74C597220890AB00665E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C596220890AB00665E4A /* Assets.xcassets */; };
 		7A74C59A220890AB00665E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C598220890AB00665E4A /* LaunchScreen.storyboard */; };
@@ -16,10 +20,13 @@
 		7A74C5CB2208A43600665E4A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5CA2208A43600665E4A /* LoginViewController.swift */; };
 		7A74C5CF2208A44500665E4A /* PortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5CC2208A44400665E4A /* PortfolioTableViewCell.swift */; };
 		7A74C5D12208A44500665E4A /* PortfolioTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */; };
-		7A74C5D32208A4D200665E4A /* PortfolioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C5D22208A4D200665E4A /* PortfolioController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A09DF042208A8AE0043A1DD /* PortfolioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioController.swift; sourceTree = "<group>"; };
+		7A09DF072208AA1A0043A1DD /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VarelaRound-Regular.ttf"; sourceTree = "<group>"; };
+		7A09DF092208AAEA0043A1DD /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceHelper.swift; sourceTree = "<group>"; };
+		7A09DF0B2208ACDA0043A1DD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		7A74C58C220890A700665E4A /* ArtPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A74C58F220890A700665E4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A74C596220890AB00665E4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -31,7 +38,6 @@
 		7A74C5CA2208A43600665E4A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7A74C5CC2208A44400665E4A /* PortfolioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PortfolioTableViewController.swift; sourceTree = "<group>"; };
-		7A74C5D22208A4D200665E4A /* PortfolioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PortfolioController.swift; path = "../../../../../Downloads/Art-Portfolio-master/Art-Portfolio/PortfolioController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A09DF012208A80B0043A1DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7A74C5CC2208A44400665E4A /* PortfolioTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7A09DF062208A8BF0043A1DD /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7A09DF042208A8AE0043A1DD /* PortfolioController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		7A74C583220890A700665E4A = {
 			isa = PBXGroup;
 			children = (
@@ -65,15 +87,16 @@
 			isa = PBXGroup;
 			children = (
 				7A74C58F220890A700665E4A /* AppDelegate.swift */,
-				7A74C5CC2208A44400665E4A /* PortfolioTableViewCell.swift */,
-				7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */,
-				7A74C5D22208A4D200665E4A /* PortfolioController.swift */,
-				7A74C5C92208A43600665E4A /* View Controllers */,
+				7A09DF092208AAEA0043A1DD /* AppearanceHelper.swift */,
 				7A74C5C42208A41A00665E4A /* Model */,
+				7A09DF062208A8BF0043A1DD /* Model Controllers */,
+				7A09DF012208A80B0043A1DD /* Views */,
+				7A74C5C92208A43600665E4A /* View Controllers */,
 				7A74C5C22208A3B700665E4A /* Main.storyboard */,
 				7A74C596220890AB00665E4A /* Assets.xcassets */,
 				7A74C598220890AB00665E4A /* LaunchScreen.storyboard */,
 				7A74C59B220890AB00665E4A /* Info.plist */,
+				7A09DF072208AA1A0043A1DD /* VarelaRound-Regular.ttf */,
 			);
 			path = ArtPortfolio;
 			sourceTree = "<group>";
@@ -90,7 +113,9 @@
 		7A74C5C92208A43600665E4A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7A09DF0B2208ACDA0043A1DD /* WelcomeViewController.swift */,
 				7A74C5CA2208A43600665E4A /* LoginViewController.swift */,
+				7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -154,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A74C59A220890AB00665E4A /* LaunchScreen.storyboard in Resources */,
+				7A09DF082208AA1A0043A1DD /* VarelaRound-Regular.ttf in Resources */,
 				7A74C597220890AB00665E4A /* Assets.xcassets in Resources */,
 				7A74C5C32208A3B700665E4A /* Main.storyboard in Resources */,
 			);
@@ -166,12 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A09DF0C2208ACDA0043A1DD /* WelcomeViewController.swift in Sources */,
 				7A74C5C82208A41A00665E4A /* Portfolio.swift in Sources */,
+				7A09DF0A2208AAEA0043A1DD /* AppearanceHelper.swift in Sources */,
 				7A74C5D12208A44500665E4A /* PortfolioTableViewController.swift in Sources */,
 				7A74C5C72208A41A00665E4A /* Users.swift in Sources */,
 				7A74C5CB2208A43600665E4A /* LoginViewController.swift in Sources */,
+				7A09DF052208A8AE0043A1DD /* PortfolioController.swift in Sources */,
 				7A74C5CF2208A44500665E4A /* PortfolioTableViewCell.swift in Sources */,
-				7A74C5D32208A4D200665E4A /* PortfolioController.swift in Sources */,
 				7A74C590220890A700665E4A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
