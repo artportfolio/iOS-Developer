@@ -17,13 +17,14 @@ enum AppearanceHelper {
     static func setupAppearance(){
         //Change the apperance for all instances of UINavigationBar.
         //appearance proxy will set for all instances in our app.
-//        UINavigationBar.appearance().barTintColor = backgroundGray
+        UINavigationBar.appearance().barTintColor = .navBarTintColor
+
 //        UIBarButtonItem.appearance().tintColor = lambdaRed
 //        UISegmentedControl.appearance().tintColor = lambdaRed
         
         UILabel.appearance().textColor = .textColor
         
-        let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        let textAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navBarTextColor]
         UINavigationBar.appearance().titleTextAttributes = textAttributes
         UINavigationBar.appearance().largeTitleTextAttributes = textAttributes
         
@@ -63,6 +64,10 @@ extension UIColor {
     static let buttonBackgroundColor = UIColor(red: 103/255, green: 158/255, blue: 199/255, alpha: 1)
     
     static let buttonTextColor = UIColor(red: 255/255, green: 252/255, blue: 163/255, alpha: 1)
+    
+    static let navBarTextColor = UIColor(red: 38/255, green: 57/255, blue: 61/255, alpha: 1)
+    
+     static let navBarTintColor = UIColor(red: 189/255, green: 186/255, blue: 121/255, alpha: 1)
     
 }
 

@@ -16,6 +16,7 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var guestLoginButton: UIButton!
     
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +33,8 @@ class WelcomeViewController: UIViewController {
         
         AppearanceHelper.style(button: loginButton)
         AppearanceHelper.style(button: guestLoginButton)
+        
+        imageView.layer.cornerRadius = 20
     }
     
 

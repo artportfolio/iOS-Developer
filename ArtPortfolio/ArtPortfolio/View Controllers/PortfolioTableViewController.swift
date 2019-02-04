@@ -11,22 +11,29 @@ import UIKit
 class PortfolioTableViewController: UITableViewController {
     
     var portfolioController = PortfolioController()
+    
+    let spinner = UIActivityIndicatorView(style: .gray)
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         fetchPosts()
+        tableView.backgroundView = spinner
         
     }
 
     
     func fetchPosts() {
+        spinner.startAnimating()
         portfolioController.loadPosts { (error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.spinner.stopAnimating()
             }
 
         }
@@ -57,5 +64,8 @@ class PortfolioTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func cancelBarButtonAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true)
+    }
+    
 }

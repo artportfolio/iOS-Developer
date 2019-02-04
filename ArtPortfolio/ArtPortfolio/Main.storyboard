@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Lk3-gO-I8p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q35-BI-MUy">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -17,15 +17,51 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dfw-XL-u0S">
+                                <rect key="frame" x="20" y="144" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nCp-wN-JSN">
+                                <rect key="frame" x="20" y="182" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mV-M6-PpD">
+                                <rect key="frame" x="137" y="220" width="140" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log in"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SkW-4z-lw5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="If you have an artist account please log in:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kl-3i-kzD">
+                                <rect key="frame" x="43" y="115" width="328" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.8980392157" blue="0.58431372550000005" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="5of-2a-Ass"/>
                     <navigationItem key="navigationItem" title="Log in" id="SgU-NM-X4y"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="Dfw-XL-u0S" id="AJI-yl-1Ed"/>
+                        <outlet property="loginButton" destination="2mV-M6-PpD" id="inc-jw-tRO"/>
+                        <outlet property="loginLabel" destination="1Kl-3i-kzD" id="WKz-bd-YJR"/>
+                        <outlet property="passwordTextField" destination="nCp-wN-JSN" id="agb-9S-X10"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3850.7246376811595" y="132.58928571428572"/>
+            <point key="canvasLocation" x="989.85507246376824" y="-528.34821428571422"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Vr9-u8-RiI">
@@ -40,9 +76,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKw-Sl-jRe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4544.927536231884" y="132.58928571428572"/>
+            <point key="canvasLocation" x="6363.7681159420299" y="132.58928571428572"/>
         </scene>
-        <!--Item-->
+        <!--Portfolio Table View Controller-->
         <scene sceneID="XFW-ut-Ky5">
             <objects>
                 <tableViewController id="maC-mk-s8h" customClass="PortfolioTableViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,20 +155,19 @@
                             <outlet property="delegate" destination="maC-mk-s8h" id="icc-Yy-yo2"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="lPm-Bt-tjq"/>
                     <navigationItem key="navigationItem" id="FWz-mO-R6P">
-                        <barButtonItem key="rightBarButtonItem" title="Artist Login" id="LZk-ff-ldV">
+                        <barButtonItem key="leftBarButtonItem" image="multiply" id="Q8l-dp-e5I">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="PTB-PU-KCj"/>
+                                <action selector="cancelBarButtonAction:" destination="maC-mk-s8h" id="BW1-rk-0Ab"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NN1-Cr-dbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3081.1594202898555" y="132.58928571428572"/>
+            <point key="canvasLocation" x="3952.1739130434785" y="132.58928571428572"/>
         </scene>
-        <!--Welcome View Controller-->
+        <!--Artful-->
         <scene sceneID="YJd-0t-6aP">
             <objects>
                 <viewController id="Lk3-gO-I8p" customClass="WelcomeViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
@@ -148,35 +183,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Are you an artist? Log in below:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nF-0I-Q4u">
-                                <rect key="frame" x="88" y="411" width="239" height="21"/>
+                                <rect key="frame" x="88" y="452" width="239" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAE-Qt-IWZ">
-                                <rect key="frame" x="53" y="455" width="309" height="30"/>
+                                <rect key="frame" x="53" y="496" width="309" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.9882352941176471" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" id="DLC-fM-CbB"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="JoK-Dw-MmI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J2x-AR-WSW">
-                                <rect key="frame" x="53" y="507" width="309" height="30"/>
+                                <rect key="frame" x="53" y="548" width="309" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Guest"/>
                                 <connections>
                                     <segue destination="tui-Cx-8Pq" kind="presentation" id="sqe-kb-v9d"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="artist" translatesAutoresizingMaskIntoConstraints="NO" id="C2R-br-i9c">
+                                <rect key="frame" x="28" y="243" width="359" height="172"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.90980392156862744" green="0.89803921568627454" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
                         <viewLayoutGuide key="safeArea" id="oyI-6z-ysT"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Artful" id="Q7k-cj-XPo"/>
                     <connections>
                         <outlet property="guestLoginButton" destination="J2x-AR-WSW" id="TYj-PZ-gVj"/>
+                        <outlet property="imageView" destination="C2R-br-i9c" id="3PW-LF-tbJ"/>
                         <outlet property="loginButton" destination="FAE-Qt-IWZ" id="36D-U3-ZPz"/>
                         <outlet property="signInLabel" destination="5nF-0I-Q4u" id="cvj-i9-Vs4"/>
                         <outlet property="titleLabel" destination="RJE-xg-d94" id="ecx-r4-nb0"/>
@@ -184,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L2P-cI-aB8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="418.84057971014494" y="129.91071428571428"/>
+            <point key="canvasLocation" x="166.66666666666669" y="-273.21428571428572"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="oRd-wa-5mt">
@@ -197,34 +238,57 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="RHu-kG-MBF" kind="relationship" relationship="viewControllers" id="Vy8-q7-Nx3"/>
+                        <segue destination="SPv-c6-HPs" kind="relationship" relationship="viewControllers" id="1Mt-Fu-0Pr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpN-SQ-BHe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="133"/>
+            <point key="canvasLocation" x="2208.695652173913" y="132.58928571428572"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="b61-CD-df6">
+        <scene sceneID="Nx0-Mp-6iG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RHu-kG-MBF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="lvA-1l-FFf"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q35-BI-MUy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="WhE-Dg-w4o">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0ID-ee-2kr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="maC-mk-s8h" kind="relationship" relationship="rootViewController" id="IZ8-rh-rv2"/>
+                        <segue destination="Lk3-gO-I8p" kind="relationship" relationship="rootViewController" id="Rxq-CC-WDk"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q0t-Mh-XfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vQ-ru-R8f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="77"/>
+            <point key="canvasLocation" x="-743.47826086956525" y="-273.21428571428572"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="If0-hl-ZKT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SPv-c6-HPs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_filled" id="lPm-Bt-tjq">
+                        <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ajc-vX-IwU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="maC-mk-s8h" kind="relationship" relationship="rootViewController" id="uGH-si-etf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MXQ-99-Czx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3040.579710144928" y="132.58928571428572"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="DLC-fM-CbB"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="artist" width="1000" height="667"/>
+        <image name="home" width="100" height="100"/>
+        <image name="home_filled" width="100" height="100"/>
+        <image name="multiply" width="100" height="100"/>
+    </resources>
 </document>

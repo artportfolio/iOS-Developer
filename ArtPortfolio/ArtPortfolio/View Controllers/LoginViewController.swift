@@ -9,12 +9,24 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewAppearance()
+    }
+    
+    private func viewAppearance(){
+        loginLabel.font = AppearanceHelper.applicationFont(with: .headline, pointSize: 15)
+        AppearanceHelper.style(button: loginButton)
     }
 
-
+    @IBAction func loginButtonPressed(_ sender: UIButton) {
+    }
+    
 }
 
