@@ -12,6 +12,7 @@
 		7A09DF0A2208AAEA0043A1DD /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF092208AAEA0043A1DD /* AppearanceHelper.swift */; };
 		7A09DF0C2208ACDA0043A1DD /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF0B2208ACDA0043A1DD /* WelcomeViewController.swift */; };
 		7A09DF0E2208CEF70043A1DD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF0D2208CEF70043A1DD /* DetailViewController.swift */; };
+		7A09DF102209051D0043A1DD /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF0F2209051D0043A1DD /* SignupViewController.swift */; };
 		7A74C590220890A700665E4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C58F220890A700665E4A /* AppDelegate.swift */; };
 		7A74C597220890AB00665E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C596220890AB00665E4A /* Assets.xcassets */; };
 		7A74C59A220890AB00665E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C598220890AB00665E4A /* LaunchScreen.storyboard */; };
@@ -29,6 +30,7 @@
 		7A09DF092208AAEA0043A1DD /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceHelper.swift; sourceTree = "<group>"; };
 		7A09DF0B2208ACDA0043A1DD /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		7A09DF0D2208CEF70043A1DD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		7A09DF0F2209051D0043A1DD /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		7A74C58C220890A700665E4A /* ArtPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A74C58F220890A700665E4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A74C596220890AB00665E4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				7A09DF0B2208ACDA0043A1DD /* WelcomeViewController.swift */,
 				7A74C5CA2208A43600665E4A /* LoginViewController.swift */,
+				7A09DF0F2209051D0043A1DD /* SignupViewController.swift */,
 				7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */,
 				7A09DF0D2208CEF70043A1DD /* DetailViewController.swift */,
 			);
@@ -197,6 +200,7 @@
 			files = (
 				7A09DF0C2208ACDA0043A1DD /* WelcomeViewController.swift in Sources */,
 				7A74C5C82208A41A00665E4A /* Portfolio.swift in Sources */,
+				7A09DF102209051D0043A1DD /* SignupViewController.swift in Sources */,
 				7A09DF0A2208AAEA0043A1DD /* AppearanceHelper.swift in Sources */,
 				7A74C5D12208A44500665E4A /* PortfolioTableViewController.swift in Sources */,
 				7A74C5C72208A41A00665E4A /* Users.swift in Sources */,

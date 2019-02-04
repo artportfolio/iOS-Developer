@@ -73,4 +73,5 @@ extension UIColor {
 
 extension CGColor {
      static let buttonBorderColor = UIColor(red: 64/255, green: 98/255, blue: 124/255, alpha: 1).cgColor
+    static let imageBorderColor = UIColor(red: 255/255, green: 252/255, blue: 163/255, alpha: 1).cgColor
 }

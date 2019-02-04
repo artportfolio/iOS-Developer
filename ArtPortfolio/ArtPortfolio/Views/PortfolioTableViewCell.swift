@@ -32,6 +32,9 @@ class PortfolioTableViewCell: UITableViewCell {
         numberOfLikesLabel.text = String(portfolio.posts.likes)
         guard let imageUrl = URL(string: portfolio.posts.imageUrl), let imageData = try? Data(contentsOf: imageUrl) else {return}
         portfolioImageView.image = UIImage(data: imageData)
+        portfolioImageView.layer.cornerRadius = 20
+        portfolioImageView.layer.borderColor = .imageBorderColor
+        portfolioImageView.layer.borderWidth = 1
     }
 
     

@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
 
         updateViews()
         editButton.isHidden = true
+        updateAppearance()
         
     }
     
@@ -36,7 +37,11 @@ class DetailViewController: UIViewController {
         artImageView.image = UIImage(data: imageData)
     }
     
-   
+    func updateAppearance() {
+        artImageView.layer.cornerRadius = 20
+        artImageView.layer.borderColor = .imageBorderColor
+        artImageView.layer.borderWidth = 1
+    }
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
     }
