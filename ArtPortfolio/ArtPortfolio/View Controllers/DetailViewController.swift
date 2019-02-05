@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var submitButtom: UIButton!
     
+    @IBOutlet weak var titleTextField: UITextField!
     
     
     var portfolioController: PortfolioController?
