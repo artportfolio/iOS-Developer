@@ -26,7 +26,7 @@ class PortfolioTableViewController: UITableViewController {
 
         
         fetchPosts()
-        tableView.backgroundView = spinner
+     //   tableView.backgroundView = spinner
         
         
         addBarButton.isEnabled = false
