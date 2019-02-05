@@ -185,9 +185,9 @@
                                                         <constraint firstAttribute="height" constant="168" id="PEZ-Ee-FDs"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGi-4v-brE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGi-4v-brE">
                                                     <rect key="frame" x="0.0" y="176" width="404" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -196,22 +196,29 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0GL-Qb-u4K">
                                             <rect key="frame" x="5" y="210.5" width="404" height="30"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-3G-RkB">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-3G-RkB">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Zam-hd-RrD"/>
                                                     </constraints>
-                                                    <state key="normal" title="Like"/>
+                                                    <state key="normal" title="Upvotes" image="like"/>
                                                     <connections>
-                                                        <action selector="likeButtonPressed:" destination="8Nv-E8-vHA" eventType="touchUpInside" id="rsu-Xr-JFs"/>
+                                                        <action selector="thumbsUpButtonPressed:" destination="8Nv-E8-vHA" eventType="touchUpInside" id="rsu-Xr-JFs"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVo-nj-Gf7">
-                                                    <rect key="frame" x="58" y="0.0" width="346" height="30"/>
+                                                    <rect key="frame" x="58" y="0.0" width="18" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08k-rC-Mr1">
+                                                    <rect key="frame" x="84" y="0.0" width="320" height="30"/>
+                                                    <state key="normal" title="Read More..."/>
+                                                    <connections>
+                                                        <action selector="readMoreButtonTapped:" destination="8Nv-E8-vHA" eventType="touchUpInside" id="KgR-OV-mpw"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -226,10 +233,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="descriptionLabel" destination="lGi-4v-brE" id="UW4-Xx-fkf"/>
                                     <outlet property="numberOfLikesLabel" destination="NVo-nj-Gf7" id="OXU-tq-2b7"/>
                                     <outlet property="portfolioImageView" destination="Z8D-kW-TUT" id="gT6-U2-oy1"/>
-                                    <segue destination="7Sk-M8-GiP" kind="show" identifier="toDetailVC" id="U0D-Le-sN8"/>
+                                    <outlet property="readMoreButton" destination="08k-rC-Mr1" id="P3r-md-5Tl"/>
+                                    <outlet property="thumbsUpButton" destination="6gR-3G-RkB" id="fjG-wc-qYw"/>
+                                    <outlet property="titleLabel" destination="lGi-4v-brE" id="UW4-Xx-fkf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -248,6 +256,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addBarButton" destination="LKa-2C-T5e" id="wEx-0U-XqX"/>
+                        <segue destination="7Sk-M8-GiP" kind="show" identifier="toDetailVC" id="Dyd-tS-3pI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NN1-Cr-dbu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -269,17 +278,25 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RiC-jF-IgF">
                                 <rect key="frame" x="20" y="436" width="374" height="246"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-k2-jmr">
-                                <rect key="frame" x="192" y="711" width="30" height="30"/>
+                                <rect key="frame" x="357" y="644" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editButtonPressed:" destination="7Sk-M8-GiP" eventType="touchUpInside" id="deh-Zh-43c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-yb-RgB">
+                                <rect key="frame" x="183" y="690" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="7Sk-M8-GiP" eventType="touchUpInside" id="S9p-v1-AZv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -290,6 +307,7 @@
                         <outlet property="artDescriptionTextView" destination="RiC-jF-IgF" id="J45-gO-5On"/>
                         <outlet property="artImageView" destination="QBs-gz-wRc" id="Nfm-hr-szH"/>
                         <outlet property="editButton" destination="0S4-k2-jmr" id="6hp-pi-yX5"/>
+                        <outlet property="submitButtom" destination="wdX-yb-RgB" id="5hD-AO-GpS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWN-uD-Gy2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -418,6 +436,7 @@
         <image name="artist" width="1000" height="667"/>
         <image name="home" width="100" height="100"/>
         <image name="home_filled" width="100" height="100"/>
+        <image name="like" width="100" height="100"/>
         <image name="multiply" width="100" height="100"/>
     </resources>
 </document>

@@ -11,8 +11,14 @@ import UIKit
 class PortfolioTableViewCell: UITableViewCell {
     
     @IBOutlet weak var portfolioImageView: UIImageView!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var numberOfLikesLabel: UILabel!
+    
+    @IBOutlet weak var readMoreButton: UIButton!
+    
+    @IBOutlet weak var thumbsUpButton: UIButton!
+    
+    weak var delegate: PortfolioCellDelegate?
     
     var portfolio: Users? {
         didSet {
@@ -28,17 +34,22 @@ class PortfolioTableViewCell: UITableViewCell {
     func updateViews() {
         guard let portfolio = portfolio else {return}
         
-        descriptionLabel.text = portfolio.posts.postDescription
+        titleLabel.text = portfolio.posts.postDescription
         numberOfLikesLabel.text = String(portfolio.posts.likes)
         guard let imageUrl = URL(string: portfolio.posts.imageUrl), let imageData = try? Data(contentsOf: imageUrl) else {return}
         portfolioImageView.image = UIImage(data: imageData)
-        portfolioImageView.layer.cornerRadius = 20
+        portfolioImageView.layer.cornerRadius = 10
         portfolioImageView.layer.borderColor = .imageBorderColor
         portfolioImageView.layer.borderWidth = 1
     }
 
     
-    @IBAction func likeButtonPressed(_ sender: UIButton) {
+    @IBAction func thumbsUpButtonPressed(_ sender: UIButton) {
+        print("Button Pressed!")
     }
     
+    @IBAction func readMoreButtonTapped(_ sender: UIButton) {
+        
+        delegate?.tappedReadMoreButton(on: self)
+    }
 }

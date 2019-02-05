@@ -14,6 +14,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var artDescriptionTextView: UITextView!
     
     @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var submitButtom: UIButton!
+    
+    
     
     var portfolioController: PortfolioController?
     var portfolio: Users?
@@ -23,6 +26,7 @@ class DetailViewController: UIViewController {
 
         updateViews()
         editButton.isHidden = true
+        submitButtom.isHidden = true
         updateAppearance()
         
     }
@@ -41,10 +45,15 @@ class DetailViewController: UIViewController {
         artImageView.layer.cornerRadius = 20
         artImageView.layer.borderColor = .imageBorderColor
         artImageView.layer.borderWidth = 1
+        AppearanceHelper.style(button: submitButtom)
+        artDescriptionTextView.font = AppearanceHelper.applicationFont(with: .body, pointSize: 15)
+        artDescriptionTextView.textColor = .textColor
     }
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
     }
     
-
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+    }
+    
 }

@@ -12,7 +12,7 @@ class PortfolioTableViewController: UITableViewController {
     
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
-    
+    var cellTappedIndex = 0
     
     var portfolioController = PortfolioController()
     
@@ -23,6 +23,7 @@ class PortfolioTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         fetchPosts()
         tableView.backgroundView = spinner
         
@@ -56,9 +57,11 @@ class PortfolioTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "portfolioCell", for: indexPath) as! PortfolioTableViewCell
 
      let portfolio = portfolioController.artPortfolioUsers[indexPath.row]
-       
+        
+        cell.delegate = self
         cell.portfolio = portfolio
 
+        
         return cell
     }
 
@@ -71,8 +74,10 @@ class PortfolioTableViewController: UITableViewController {
             let destinationVC = segue.destination as? DetailViewController
             destinationVC?.portfolioController = portfolioController
             
-            guard let indexpath = tableView.indexPathForSelectedRow else {return}
-            let portfolio = portfolioController.artPortfolioUsers[indexpath.row]
+          //  guard let indexpath = tableView.indexPathForSelectedRow else {return}
+         //   let portfolio = portfolioController.artPortfolioUsers[indexpath.row]
+        //    guard let indexpath = cellTappedIndex else {return}
+            let portfolio = portfolioController.artPortfolioUsers[cellTappedIndex]
             
             destinationVC?.portfolio = portfolio
         }
@@ -82,5 +87,18 @@ class PortfolioTableViewController: UITableViewController {
     @IBAction func cancelBarButtonAction(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
+}
+
+extension PortfolioTableViewController: PortfolioCellDelegate {
+    func tappedReadMoreButton(on cell: PortfolioTableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        cellTappedIndex = indexPath.row
+        
+        performSegue(withIdentifier: "toDetailVC", sender: self)
+      
+    }
+    
     
 }

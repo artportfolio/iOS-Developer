@@ -32,9 +32,11 @@ enum AppearanceHelper {
         
         //  UIView.appearance(whenContainedInInstancesOf: [UITableView.self]).backgroundColor = backgroundGray
         
-//        UITextField.appearance().keyboardAppearance = .dark
-//        UITextField.appearance().tintColor = lambdaRed
-//        UITextView.appearance().tintColor = lambdaRed
+        UITextField.appearance().keyboardAppearance = .dark
+    
+       //  UITextView.appearance().backgroundColor = .textViewBackgroundColor
+       // UITextField.appearance().tintColor = .navBarTintColor
+       // UITextView.appearance().tintColor = .navBarTintColor
         
         
         
@@ -67,7 +69,9 @@ extension UIColor {
     
     static let navBarTextColor = UIColor(red: 255/255, green: 252/255, blue: 163/255, alpha: 1)
     
-     static let navBarTintColor = UIColor(red: 38/255, green: 57/255, blue: 61/255, alpha: 1)
+    static let navBarTintColor = UIColor(red: 38/255, green: 57/255, blue: 61/255, alpha: 1)
+    
+//    static let textViewBackgroundColor = UIColor(red: 82/255, green: 124/255, blue: 133/255, alpha: 1)
     
 }
 
