@@ -25,22 +25,22 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateViews()
+     //   updateViews()
         editButton.isHidden = true
         submitButtom.isHidden = true
         updateAppearance()
         
     }
     
-    func updateViews() {
-        guard let portfolios = portfolio else {return}
-        
-        artDescriptionTextView.text = portfolios.posts.postDescription
-        
-        guard let imageURL = URL(string: portfolios.posts.imageUrl), let imageData = try? Data(contentsOf: imageURL) else { return }
-        
-        artImageView.image = UIImage(data: imageData)
-    }
+//    func updateViews() {
+//        guard let portfolios = portfolio else {return}
+//        
+//        artDescriptionTextView.text = portfolios.posts.postDescription
+//        
+//        guard let imageURL = URL(string: portfolios.posts.imageUrl), let imageData = try? Data(contentsOf: imageURL) else { return }
+//        
+//        artImageView.image = UIImage(data: imageData)
+//    }
     
     func updateAppearance() {
         artImageView.layer.cornerRadius = 20

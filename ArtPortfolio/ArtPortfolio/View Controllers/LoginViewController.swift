@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var signupButton: UIButton!
     
+    var portfolioController = PortfolioController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,17 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        guard let username = usernameTextField.text, !username.isEmpty, let password = passwordTextField.text, !password.isEmpty else { return }
+        
+        //login code
+        portfolioController.login(username: username, password: password) { (error) in
+            if let error = error {
+                print("ERROR:: \(error)")
+            }
+            
+            print("Logged in..")
+        }
+        
     }
     
 }
