@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class PortfolioTableViewController: UITableViewController {
     
@@ -16,7 +17,7 @@ class PortfolioTableViewController: UITableViewController {
     
     var portfolioController = PortfolioController()
     
-    let spinner = UIActivityIndicatorView(style: .gray)
+//    let spinner = UIActivityIndicatorView(style: .gray)
     
 
 
@@ -34,14 +35,16 @@ class PortfolioTableViewController: UITableViewController {
 
     
     func fetchPosts() {
-        spinner.startAnimating()
+      //  spinner.startAnimating()
+        ProgressHUD.show("Fetching Data...", interaction: true)
         portfolioController.loadPosts { (error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.spinner.stopAnimating()
+                ProgressHUD.showSuccess()
+              //  self.spinner.stopAnimating()
             }
 
         }
