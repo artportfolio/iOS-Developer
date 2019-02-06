@@ -10,6 +10,7 @@ import UIKit
 import ProgressHUD
 
 class PortfolioTableViewController: UITableViewController {
+
     
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
@@ -86,7 +87,10 @@ class PortfolioTableViewController: UITableViewController {
   
    
     @IBAction func cancelBarButtonAction(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+       // dismiss(animated: true)
+        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as UIViewController
+  
+        self.present(viewController, animated: true, completion: nil)
     }
     
 }

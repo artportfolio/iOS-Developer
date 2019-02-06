@@ -18,6 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppearanceHelper.setupAppearance()
         
+        let userDefults = UserDefaults.standard
+        
+        if userDefults.string(forKey: "token") != nil {
+            let rootVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar") as UIViewController
+            
+            rootVC.view.frame = UIScreen.main.bounds
+            
+            UIView.transition(with: self.window!, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                self.window!.rootViewController = rootVC
+            }, completion: nil)
+        }
+        
         return true
     }
 

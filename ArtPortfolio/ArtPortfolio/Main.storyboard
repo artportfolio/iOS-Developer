@@ -19,22 +19,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RTu-tq-pYV">
-                                <rect key="frame" x="20" y="115" width="373" height="95.5"/>
+                                <rect key="frame" x="20" y="115" width="374" height="95.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you have an artist account please log in:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Kl-3i-kzD">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dfw-XL-u0S">
-                                        <rect key="frame" x="0.0" y="27.5" width="373" height="30"/>
+                                        <rect key="frame" x="0.0" y="27.5" width="374" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nCp-wN-JSN">
-                                        <rect key="frame" x="0.0" y="65.5" width="373" height="30"/>
+                                        <rect key="frame" x="0.0" y="65.5" width="374" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -49,14 +49,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FpV-Te-6f8">
-                                <rect key="frame" x="137" y="832" width="139" height="30"/>
+                                <rect key="frame" x="137" y="832" width="140" height="30"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <segue destination="P5i-EB-Bvp" kind="show" id="kqU-15-QmD"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dont have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KN-6R-qtt">
-                                <rect key="frame" x="119" y="803.5" width="175" height="20.5"/>
+                                <rect key="frame" x="119" y="803.5" width="176" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -88,11 +88,12 @@
                         <outlet property="passwordTextField" destination="nCp-wN-JSN" id="agb-9S-X10"/>
                         <outlet property="signupButton" destination="FpV-Te-6f8" id="wgg-5I-3my"/>
                         <outlet property="usernameTextField" destination="Dfw-XL-u0S" id="AJI-yl-1Ed"/>
+                        <segue destination="maC-mk-s8h" kind="show" identifier="toTableVCFromLogin" id="7qn-rS-uXH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="989.85507246376824" y="-528.34821428571422"/>
+            <point key="canvasLocation" x="875" y="-528"/>
         </scene>
         <!--Sign up-->
         <scene sceneID="5Ol-ZK-xcN">
@@ -183,16 +184,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="EyM-8O-0dK">
-                                <rect key="frame" x="20" y="283" width="374" height="308"/>
+                                <rect key="frame" x="20" y="283" width="374" height="357"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UKP-TY-DTc">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="79"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mWb-wD-Msq">
-                                        <rect key="frame" x="0.0" y="38" width="374" height="270"/>
+                                        <rect key="frame" x="0.0" y="87" width="374" height="270"/>
                                         <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -207,7 +208,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pb-SP-46Z">
-                                <rect key="frame" x="178" y="620" width="58" height="30"/>
+                                <rect key="frame" x="178" y="669" width="58" height="30"/>
                                 <state key="normal" title="Post"/>
                                 <connections>
                                     <action selector="postButtonPressed:" destination="CJM-lf-BGf" eventType="touchUpInside" id="HQW-xZ-JJV"/>
@@ -250,7 +251,7 @@
         <!--Portfolios-->
         <scene sceneID="XFW-ut-Ky5">
             <objects>
-                <tableViewController id="maC-mk-s8h" customClass="PortfolioTableViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PortfolioTableViewController" id="maC-mk-s8h" customClass="PortfolioTableViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="EuQ-iP-lpf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -368,27 +369,27 @@
                                     <constraint firstAttribute="height" constant="308" id="TRZ-Nl-hsP"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RiC-jF-IgF">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RiC-jF-IgF">
                                 <rect key="frame" x="20" y="511" width="374" height="246"/>
                                 <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-k2-jmr">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-k2-jmr">
                                 <rect key="frame" x="346" y="727" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="editButtonPressed:" destination="7Sk-M8-GiP" eventType="touchUpInside" id="deh-Zh-43c"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bQA-Cf-Cze">
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bQA-Cf-Cze">
                                 <rect key="frame" x="20" y="473" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-yb-RgB">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-yb-RgB">
                                 <rect key="frame" x="132" y="783" width="150" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
@@ -433,7 +434,7 @@
         <!--Artful-->
         <scene sceneID="YJd-0t-6aP">
             <objects>
-                <viewController id="Lk3-gO-I8p" customClass="WelcomeViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" id="Lk3-gO-I8p" customClass="WelcomeViewController" customModule="ArtPortfolio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jZF-5W-cad">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -476,7 +477,7 @@
                                         <rect key="frame" x="0.0" y="52" width="374" height="30"/>
                                         <state key="normal" title="Guest"/>
                                         <connections>
-                                            <segue destination="tui-Cx-8Pq" kind="presentation" id="sqe-kb-v9d"/>
+                                            <segue destination="tui-Cx-8Pq" kind="presentation" identifier="toTabBar" id="sqe-kb-v9d"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -513,7 +514,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="oRd-wa-5mt">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="tui-Cx-8Pq" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" id="tui-Cx-8Pq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8fL-ko-RSJ">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -575,4 +576,7 @@
         <image name="like" width="100" height="100"/>
         <image name="multiply" width="75" height="75"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7qn-rS-uXH"/>
+    </inferredMetricsTieBreakers>
 </document>

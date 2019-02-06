@@ -43,8 +43,12 @@ class LoginViewController: UIViewController {
         portfolioController.login(username: username, password: password) { (error) in
             if let error = error {
                 print("ERROR:: \(error)")
+                return
             }
-            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "toTableVCFromLogin", sender: self)
+            }
+          
             print("Logged in..")
         }
         

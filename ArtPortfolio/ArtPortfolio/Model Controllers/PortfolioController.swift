@@ -11,6 +11,7 @@ import Foundation
 class PortfolioController {
     
     private(set) var users: [Users] = []
+    private(set) var posts: [Posts] = []
     private let baseURL = URL(string: "https://backend-art.herokuapp.com/api/register")!
     
     func registerUser(username: String, fullname: String, password: String, email: String?, userProfileImage: String?, completion: @escaping(Error?) -> Void){
@@ -86,6 +87,8 @@ class PortfolioController {
             do {
                 let users = try decoder.decode(UserLogin.self, from: data)
                 
+               let userDefaults =  UserDefaults.standard
+                userDefaults.set(users.token, forKey: "token")
                 print(users)
                 
                 completion(nil)
@@ -97,5 +100,85 @@ class PortfolioController {
             }.resume()
     }
  
+    
+    func fetchUserInfo(completion: @escaping(Users?, Error?) -> Void){
+        
+        let baseURL = URL(string: "https://backend-art.herokuapp.com/api/login")!
+        
+       let request = URLRequest(url: baseURL)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("ERROR WITH DATA TASK: \(error)")
+                completion(nil, error)
+            }
+            
+            if let response = response {
+                print("RESPONSE: \(response)")
+            }
+            
+            guard let data = data else {
+                print("No data returned: \(error!)")
+                completion(nil, error)
+                return
+                
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do {
+              let users = try decoder.decode(Users.self, from: data)
+                self.users.append(users)
+                print(users)
+                completion(users, nil)
+            } catch {
+                print("ERROR DECODING: \(error)")
+                completion(nil, error)
+            }
+            
+        }.resume()
+
+    }
+    
+    func fetchPosts(completion: @escaping(Posts?, Error?) -> Void){
+        
+        let baseURL = URL(string: "https://backend-art.herokuapp.com/api/posts")!
+        
+        let request = URLRequest(url: baseURL)
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("ERROR WITH DATA TASK: \(error)")
+                completion(nil, error)
+            }
+            
+            if let response = response {
+                print("RESPONSE: \(response)")
+            }
+            
+            guard let data = data else {
+                print("No data returned: \(error!)")
+                completion(nil, error)
+                return
+                
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let posts = try decoder.decode(Posts.self, from: data)
+                self.posts.append(posts)
+                print(posts)
+                completion(posts, nil)
+            } catch {
+                print("ERROR DECODING: \(error)")
+                completion(nil, error)
+            }
+            
+            }.resume()
+        
+        
+        
+    }
     
 }
