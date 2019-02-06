@@ -53,7 +53,7 @@ class SignupViewController: UIViewController {
             ProgressHUD.showSuccess()
             
             DispatchQueue.main.async {
-                let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar") as UIViewController
+                let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondLoginVC") as UIViewController
                 
                 self.present(viewController, animated: true, completion: nil)
            

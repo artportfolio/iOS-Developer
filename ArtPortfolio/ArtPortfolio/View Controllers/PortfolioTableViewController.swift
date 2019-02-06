@@ -125,6 +125,7 @@ extension PortfolioTableViewController: PortfolioCellDelegate {
 extension PortfolioTableViewController: ThumbsupCellDelegate {
     func tappedThumbsUp(on cell: PortfolioTableViewCell) {
         ProgressHUD.show("Upvoting...", interaction: true)
+
         voteNumber += 1
         guard let indexPath = tableView.indexPath(for: cell) else { return }
     
@@ -135,6 +136,7 @@ extension PortfolioTableViewController: ThumbsupCellDelegate {
             }
             
             DispatchQueue.main.async {
+                
                 self.tableView.reloadRows(at: [indexPath], with: .none)
                 self.fetchPosts()
                 ProgressHUD.showSuccess()

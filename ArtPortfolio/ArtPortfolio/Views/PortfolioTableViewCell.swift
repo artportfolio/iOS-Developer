@@ -35,6 +35,7 @@ class PortfolioTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
          portfolioImageView.image = nil
+        thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)
     }
     
     func updateViews() {
@@ -49,6 +50,7 @@ class PortfolioTableViewCell: UITableViewCell {
         portfolioImageView.layer.cornerRadius = 10
         portfolioImageView.layer.borderColor = .imageBorderColor
         portfolioImageView.layer.borderWidth = 1
+       
     }
 
     

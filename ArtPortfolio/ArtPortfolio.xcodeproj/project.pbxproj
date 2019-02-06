@@ -22,6 +22,7 @@
 		7A09DF1D220B5C8C0043A1DD /* PostUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF1C220B5C8C0043A1DD /* PostUpdate.swift */; };
 		7A09DF1F220B651F0043A1DD /* Upvote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF1E220B651F0043A1DD /* Upvote.swift */; };
 		7A09DF21220B66250043A1DD /* ThumbsupCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF20220B66250043A1DD /* ThumbsupCellDelegate.swift */; };
+		7A0C8A07220B795C00A45755 /* SecondLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C8A06220B795C00A45755 /* SecondLoginViewController.swift */; };
 		7A74C590220890A700665E4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C58F220890A700665E4A /* AppDelegate.swift */; };
 		7A74C597220890AB00665E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C596220890AB00665E4A /* Assets.xcassets */; };
 		7A74C59A220890AB00665E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C598220890AB00665E4A /* LaunchScreen.storyboard */; };
@@ -48,6 +49,7 @@
 		7A09DF1C220B5C8C0043A1DD /* PostUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUpdate.swift; sourceTree = "<group>"; };
 		7A09DF1E220B651F0043A1DD /* Upvote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upvote.swift; sourceTree = "<group>"; };
 		7A09DF20220B66250043A1DD /* ThumbsupCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbsupCellDelegate.swift; sourceTree = "<group>"; };
+		7A0C8A06220B795C00A45755 /* SecondLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondLoginViewController.swift; sourceTree = "<group>"; };
 		7A74C58C220890A700665E4A /* ArtPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A74C58F220890A700665E4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A74C596220890AB00665E4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				7A09DF0B2208ACDA0043A1DD /* WelcomeViewController.swift */,
 				7A74C5CA2208A43600665E4A /* LoginViewController.swift */,
+				7A0C8A06220B795C00A45755 /* SecondLoginViewController.swift */,
 				7A09DF0F2209051D0043A1DD /* SignupViewController.swift */,
 				7A74C5CE2208A44500665E4A /* PortfolioTableViewController.swift */,
 				7A09DF0D2208CEF70043A1DD /* DetailViewController.swift */,
@@ -303,6 +306,7 @@
 				7A09DF102209051D0043A1DD /* SignupViewController.swift in Sources */,
 				7A09DF12220906EA0043A1DD /* Posts.swift in Sources */,
 				7A09DF0A2208AAEA0043A1DD /* AppearanceHelper.swift in Sources */,
+				7A0C8A07220B795C00A45755 /* SecondLoginViewController.swift in Sources */,
 				7A09DF1D220B5C8C0043A1DD /* PostUpdate.swift in Sources */,
 				7A74C5D12208A44500665E4A /* PortfolioTableViewController.swift in Sources */,
 				7A74C5C72208A41A00665E4A /* Users.swift in Sources */,
