@@ -26,7 +26,7 @@ class PortfolioTableViewController: UITableViewController {
         super.viewDidLoad()
 
         
-        fetchPosts()
+  //      fetchPosts()
      //   tableView.backgroundView = spinner
         let userDefults = UserDefaults.standard
         
@@ -38,10 +38,18 @@ class PortfolioTableViewController: UITableViewController {
         }
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        fetchPosts()
+        tableView.reloadData()
+    }
 
 
     func fetchPosts() {
       
+        portfolioController.removeAll()
+        
         ProgressHUD.show("Fetching Data...", interaction: true)
         portfolioController.fetchPosts { (posts, error) in
             if let error = error {

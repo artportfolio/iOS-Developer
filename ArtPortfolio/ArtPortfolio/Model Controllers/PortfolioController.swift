@@ -12,7 +12,12 @@ class PortfolioController {
     
     private(set) var users: [Users] = []
     private(set) var posts: [Posts] = []
+    private(set) var postUpdate: [PostUpdate] = []
     private let baseURL = URL(string: "https://backend-art.herokuapp.com/api/register")!
+    
+    func removeAll() {
+        posts.removeAll()
+    }
     
     func registerUser(username: String, fullname: String, password: String, email: String?, userProfileImage: String?, completion: @escaping(Error?) -> Void){
         
@@ -82,15 +87,15 @@ class PortfolioController {
             let decoder = JSONDecoder()
             
             do {
-                let users = try decoder.decode(UserLogin.self, from: data)
+                let user = try decoder.decode(UserLogin.self, from: data)
                 
                 //Save the token
                let userDefaults =  UserDefaults.standard
-                userDefaults.set(users.token, forKey: "token")
+                userDefaults.set(user.token, forKey: "token")
                 //Save the userID
-                userDefaults.set(users.id, forKey: "userId")
+                userDefaults.set(user.id, forKey: "userId")
 
-                print(users)
+                print(user)
                 
                 completion(nil)
             } catch {
@@ -169,7 +174,7 @@ class PortfolioController {
             do {
                 let posts = try decoder.decode([Posts].self, from: data)
                 self.posts.append(contentsOf: posts)
-                print(posts)
+                print("POSTS: \(posts)")
                 completion(posts, nil)
             } catch {
                 print("ERROR DECODING: \(error)")
@@ -182,4 +187,107 @@ class PortfolioController {
         
     }
     
+    func createPostsWith(postName: String, imageUrl: String?, description: String?, completion: @escaping(Error?) -> Void){
+        
+        let baseURL = URL(string: "https://backend-art.herokuapp.com/api/posts")!
+        
+        let params = ["postName" : postName, "imageUrl": imageUrl, "description" : description]
+        
+        guard let body = try? JSONEncoder().encode(params) else { return }
+        var request = URLRequest(url: baseURL)
+        
+        let userDefaults = UserDefaults.standard
+        
+        let authToken = userDefaults.value(forKeyPath: "token") as? String
+        
+        request.httpMethod = HTTPHelper.post.rawValue
+        request.httpBody = body
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(authToken, forHTTPHeaderField: "authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error with the requst: \(error)")
+                completion(error)
+            }
+            
+            if let response = response {
+                print("Response from request: \(response)")
+                completion(nil)
+            }
+      
+        }.resume()
+    }
+    
+    
+    func deletePost(postId: Int, completion: @escaping (Error?) -> Void){
+        let baseURL = URL(string: "https://backend-art.herokuapp.com/api/posts/\(postId)")!
+        
+        var request = URLRequest(url: baseURL)
+        
+        let userDefaults = UserDefaults.standard
+        
+        let authToken = userDefaults.value(forKeyPath: "token") as? String
+        
+        request.httpMethod = HTTPHelper.delete.rawValue
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(authToken, forHTTPHeaderField: "authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error with request delete: \(error)")
+                completion(error)
+            }
+            
+            if let response = response {
+                print("Delete response: \(response)")
+                completion(nil)
+            }
+            
+        }.resume()
+    }
+    
+    func editPostWith(id: Int, postName: String?, imageUrl: String?, description: String?, completion: @escaping(Error?) -> Void){
+        
+        let baseURL = URL(string: "https://backend-art.herokuapp.com/api/posts/\(id)")!
+        
+        let newPost = PostUpdate(postName: postName, imageUrl: imageUrl, description: description)
+        
+        var request = URLRequest(url: baseURL)
+        
+        let userDefaults = UserDefaults.standard
+        
+        let authToken = userDefaults.value(forKeyPath: "token") as? String
+        
+        request.httpMethod = HTTPHelper.put.rawValue
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(authToken, forHTTPHeaderField: "authorization")
+        
+        
+        do {
+            let jsonEncoder = JSONEncoder()
+            let newUpdatedPost =  try jsonEncoder.encode(newPost)
+            request.httpBody = newUpdatedPost
+        } catch {
+            NSLog("Error encoding new message thread \(newPost)")
+            completion(error)
+            return
+        }
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error with request delete: \(error)")
+                completion(error)
+            }
+            
+            if let response = response {
+                print("Delete response: \(response)")
+                completion(nil)
+            }
+            
+            }.resume()
+        
+    }
+   
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var artImageView: UIImageView!
@@ -18,38 +19,47 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     
+    @IBOutlet weak var deleteButton: UIButton!
     
     var portfolioController: PortfolioController?
     var portfolio: Posts?
 
+    var postId: Int!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
         updateViews()
-     //   editButton.isHidden = true
-    //    submitButtom.isHidden = true
+     
         updateAppearance()
         
     }
     
     func updateViews() {
         guard let portfolios = portfolio else {return}
-        
+        postId = portfolios.id
         titleTextField.text = portfolios.postName
         
         artDescriptionTextView.text = portfolios.description
         
-        guard let imageURL = URL(string: portfolios.imageUrl), let imageData = try? Data(contentsOf: imageURL) else { return }
-        
-        artImageView.image = UIImage(data: imageData)
+        if let imageURL = URL(string: portfolios.imageUrl!), let imageData = try? Data(contentsOf: imageURL) {
+            artImageView.image = UIImage(data: imageData)
+        }
+
+       
         
         let userDefaults = UserDefaults.standard
-        if portfolios.id == userDefaults.integer(forKey: "userId") {
+        if portfolios.userId == userDefaults.integer(forKey: "userId") {
             editButton.isHidden = false
             submitButtom.isHidden = false
+            deleteButton.isHidden = false
+           // artDescriptionTextView.isEditable = true
         } else {
             editButton.isHidden = true
             submitButtom.isHidden = true
+            deleteButton.isHidden = true
+           // artDescriptionTextView.isEditable = false
         }
         
     }
@@ -61,17 +71,62 @@ class DetailViewController: UIViewController {
         AppearanceHelper.style(button: submitButtom)
         artDescriptionTextView.font = AppearanceHelper.applicationFont(with: .body, pointSize: 15)
         artDescriptionTextView.textColor = .textColor
+        deleteButton.layer.backgroundColor = UIColor.red.cgColor
+        editButton.setTitleColor(.textColor, for: .normal)
+        deleteButton.layer.cornerRadius = 8
+        deleteButton.setTitleColor(.textColor, for: .normal)
     }
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
         
+        artDescriptionTextView.isEditable = true
         
         
     }
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
         
+        ProgressHUD.show("Editing...", interaction: true)
         
+        portfolioController?.editPostWith(id: postId, postName: titleTextField.text, imageUrl: nil, description: artDescriptionTextView.text, completion: { (error) in
+            if let error = error {
+                print("Error editing post: \(error.localizedDescription)")
+                ProgressHUD.showError(error.localizedDescription, interaction: true)
+            }
+            DispatchQueue.main.async {
+                ProgressHUD.showSuccess()
+            }
+            
+            
+        })
+        
+    }
+    
+    
+    @IBAction func deleteButtonPressed(_ sender: UIButton) {
+        
+        print("PostID: \(postId!)")
+        
+        ProgressHUD.show("Deleting....", interaction: true)
+        
+        portfolioController?.deletePost(postId: postId!, completion: { (error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+            
+            DispatchQueue.main.async {
+                self.updateUI()
+                
+                ProgressHUD.showSuccess("Post Deleted!")
+                
+            }
+        })
+        
+    }
+    
+    func updateUI(){
+        titleTextField.text = nil
+        artDescriptionTextView.text = nil
     }
     
 }

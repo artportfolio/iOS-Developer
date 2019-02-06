@@ -28,16 +28,23 @@ class PortfolioTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+       
+    }
+    
+    override func prepareForReuse() {
+         portfolioImageView.image = nil
     }
     
     func updateViews() {
         guard let portfolio = portfolio else {return}
 
-        titleLabel.text = portfolio.description
+        titleLabel.text = portfolio.postName
         numberOfLikesLabel.text = String(portfolio.upvotes)
-        guard let imageUrl = URL(string: portfolio.imageUrl), let imageData = try? Data(contentsOf: imageUrl) else {return}
+        guard let image = portfolio.imageUrl else {return}
+        guard let imageUrl = URL(string: image), let imageData = try? Data(contentsOf: imageUrl) else {return}
         portfolioImageView.image = UIImage(data: imageData)
+    
         portfolioImageView.layer.cornerRadius = 10
         portfolioImageView.layer.borderColor = .imageBorderColor
         portfolioImageView.layer.borderWidth = 1

@@ -10,9 +10,9 @@ import Foundation
 
 struct Posts: Equatable, Codable {
     var postName: String
-    var imageUrl: String
+    var imageUrl: String?
     var upvotes: Int
     var id: Int
     var userId: Int
-    var description: String
+    var description: String?
 }

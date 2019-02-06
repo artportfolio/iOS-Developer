@@ -46,7 +46,9 @@ class LoginViewController: UIViewController {
                 return
             }
             DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "toTableVCFromLogin", sender: self)
+                let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar") as UIViewController
+                
+                self.present(viewController, animated: true, completion: nil)
             }
           
             print("Logged in..")

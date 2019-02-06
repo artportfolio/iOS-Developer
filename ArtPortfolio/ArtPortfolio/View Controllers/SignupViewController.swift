@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class SignupViewController: UIViewController {
     
@@ -49,16 +50,19 @@ class SignupViewController: UIViewController {
                 print(error)
             }
             
+            ProgressHUD.showSuccess()
+            
+            DispatchQueue.main.async {
+                let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBar") as UIViewController
+                
+                self.present(viewController, animated: true, completion: nil)
+           
+            }
+            
             print("Registered OK")
         }
         
        
-    }
-    
-   //example
-    func signup(email: String?, username: String, fullname: String, passsword: String){
-        //done code
-        print("Works ok..")
     }
     
 }
