@@ -15,6 +15,7 @@ class PortfolioTableViewController: UITableViewController {
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     var cellTappedIndex = 0
+    var voteNumber = 0
     
     var portfolioController = PortfolioController()
     
@@ -75,6 +76,7 @@ class PortfolioTableViewController: UITableViewController {
      let portfolio = portfolioController.posts[indexPath.row]
 
         cell.delegate = self
+        cell.thumbsupDelegate = self
         cell.portfolio = portfolio
 
 
@@ -117,5 +119,28 @@ extension PortfolioTableViewController: PortfolioCellDelegate {
       
     }
     
+    
+}
+
+extension PortfolioTableViewController: ThumbsupCellDelegate {
+    func tappedThumbsUp(on cell: PortfolioTableViewCell) {
+        ProgressHUD.show("Upvoting...", interaction: true)
+        voteNumber += 1
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+    
+        let posts = portfolioController.posts[indexPath.row]
+        portfolioController.upVotePost(postId: posts.id, upvote: voteNumber) { (error) in
+            if let error = error {
+                print("Error upvoting: \(error.localizedDescription)")
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadRows(at: [indexPath], with: .none)
+                self.fetchPosts()
+                ProgressHUD.showSuccess()
+            }
+        }
+    }
+   
     
 }

@@ -287,7 +287,46 @@ class PortfolioController {
             }
             
             }.resume()
+    }
+    
+    func upVotePost(postId: Int, upvote: Int, completion: @escaping(Error?) -> Void){
+        let baseURL = URL(string: "https://backend-art.herokuapp.com/api/posts/upvote/\(postId)")!
+        let upvote = Upvote(upvotes: upvote)
         
+        var request = URLRequest(url: baseURL)
+        
+        let userDefaults = UserDefaults.standard
+        
+        let authToken = userDefaults.value(forKeyPath: "token") as? String
+        
+        request.httpMethod = HTTPHelper.put.rawValue
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(authToken, forHTTPHeaderField: "authorization")
+        
+        
+        do {
+            let jsonEncoder = JSONEncoder()
+            let newUpvote =  try jsonEncoder.encode(upvote)
+            request.httpBody = newUpvote
+        } catch {
+            NSLog("Error encoding new message thread \(upvote)")
+            completion(error)
+            return
+        }
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error with request delete: \(error)")
+                completion(error)
+            }
+            
+            if let response = response {
+                print("Delete response: \(response)")
+                completion(nil)
+            }
+            
+            }.resume()
     }
    
 }
