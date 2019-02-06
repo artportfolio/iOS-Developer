@@ -20,9 +20,9 @@ class PortfolioTableViewCell: UITableViewCell {
     
     weak var delegate: PortfolioCellDelegate?
     
-    var portfolio: Users? {
+    var portfolio: Posts? {
         didSet {
-    //        updateViews()
+            updateViews()
         }
     }
     
@@ -31,17 +31,17 @@ class PortfolioTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-//    func updateViews() {
-//        guard let portfolio = portfolio else {return}
-//
-//        titleLabel.text = portfolio.posts.postDescription
-//        numberOfLikesLabel.text = String(portfolio.posts.likes)
-//        guard let imageUrl = URL(string: portfolio.posts.imageUrl), let imageData = try? Data(contentsOf: imageUrl) else {return}
-//        portfolioImageView.image = UIImage(data: imageData)
-//        portfolioImageView.layer.cornerRadius = 10
-//        portfolioImageView.layer.borderColor = .imageBorderColor
-//        portfolioImageView.layer.borderWidth = 1
-//    }
+    func updateViews() {
+        guard let portfolio = portfolio else {return}
+
+        titleLabel.text = portfolio.description
+        numberOfLikesLabel.text = String(portfolio.upvotes)
+        guard let imageUrl = URL(string: portfolio.imageUrl), let imageData = try? Data(contentsOf: imageUrl) else {return}
+        portfolioImageView.image = UIImage(data: imageData)
+        portfolioImageView.layer.cornerRadius = 10
+        portfolioImageView.layer.borderColor = .imageBorderColor
+        portfolioImageView.layer.borderWidth = 1
+    }
 
     
     @IBAction func thumbsUpButtonPressed(_ sender: UIButton) {

@@ -70,7 +70,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FpV-Te-6f8" secondAttribute="bottom" id="MaM-tq-XCG"/>
                             <constraint firstItem="6KN-6R-qtt" firstAttribute="leading" secondItem="2mV-M6-PpD" secondAttribute="trailing" constant="-157" id="Q9l-o1-XGf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FpV-Te-6f8" secondAttribute="trailing" constant="137" id="Rg0-kZ-Adb"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2mV-M6-PpD" secondAttribute="trailing" constant="137" id="S2R-cv-t1M"/>
                             <constraint firstItem="FpV-Te-6f8" firstAttribute="top" secondItem="6KN-6R-qtt" secondAttribute="bottom" constant="8" id="Snw-wp-sYJ"/>
                             <constraint firstItem="6KN-6R-qtt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="119" id="UaU-Ke-lSx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RTu-tq-pYV" secondAttribute="trailing" constant="20" id="WsX-C8-sxh"/>
@@ -369,28 +368,33 @@
                                     <constraint firstAttribute="height" constant="308" id="TRZ-Nl-hsP"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RiC-jF-IgF">
-                                <rect key="frame" x="20" y="511" width="374" height="246"/>
-                                <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-k2-jmr">
-                                <rect key="frame" x="346" y="727" width="30" height="30"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <action selector="editButtonPressed:" destination="7Sk-M8-GiP" eventType="touchUpInside" id="deh-Zh-43c"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bQA-Cf-Cze">
-                                <rect key="frame" x="20" y="473" width="374" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-yb-RgB">
-                                <rect key="frame" x="132" y="783" width="150" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dRz-UL-enm">
+                                <rect key="frame" x="20" y="453" width="374" height="322"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bQA-Cf-Cze">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RiC-jF-IgF">
+                                        <rect key="frame" x="0.0" y="38" width="374" height="246"/>
+                                        <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0S4-k2-jmr">
+                                        <rect key="frame" x="0.0" y="292" width="374" height="30"/>
+                                        <state key="normal" title="Edit"/>
+                                        <connections>
+                                            <action selector="editButtonPressed:" destination="7Sk-M8-GiP" eventType="touchUpInside" id="deh-Zh-43c"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdX-yb-RgB">
+                                <rect key="frame" x="132" y="801" width="150" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitButtonPressed:" destination="7Sk-M8-GiP" eventType="touchUpInside" id="S9p-v1-AZv"/>
@@ -400,22 +404,15 @@
                         <color key="backgroundColor" red="0.32156862749999998" green="0.48627450979999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QBs-gz-wRc" firstAttribute="leading" secondItem="KSU-p5-ECU" secondAttribute="leading" constant="20" id="0Pg-B4-QwZ"/>
-                            <constraint firstItem="0S4-k2-jmr" firstAttribute="leading" secondItem="RiC-jF-IgF" secondAttribute="trailing" constant="-48" id="4rL-fI-EHb"/>
+                            <constraint firstItem="KSU-p5-ECU" firstAttribute="trailing" secondItem="dRz-UL-enm" secondAttribute="trailing" constant="20" id="8HR-9u-MTT"/>
                             <constraint firstItem="KSU-p5-ECU" firstAttribute="trailing" secondItem="QBs-gz-wRc" secondAttribute="trailing" constant="20" id="Azn-rw-6Iw"/>
-                            <constraint firstItem="KSU-p5-ECU" firstAttribute="trailing" secondItem="wdX-yb-RgB" secondAttribute="trailing" constant="132" id="B9a-2S-L4O"/>
-                            <constraint firstItem="bQA-Cf-Cze" firstAttribute="top" secondItem="QBs-gz-wRc" secondAttribute="bottom" constant="45" id="DZC-Ib-jaF"/>
-                            <constraint firstItem="bQA-Cf-Cze" firstAttribute="leading" secondItem="KSU-p5-ECU" secondAttribute="leading" constant="20" id="F00-BK-1U3"/>
-                            <constraint firstItem="KSU-p5-ECU" firstAttribute="trailing" secondItem="bQA-Cf-Cze" secondAttribute="trailing" constant="20" id="Pyr-Tj-YTb"/>
+                            <constraint firstItem="KSU-p5-ECU" firstAttribute="bottom" secondItem="wdX-yb-RgB" secondAttribute="bottom" constant="31" id="B8l-81-jwj"/>
+                            <constraint firstItem="dRz-UL-enm" firstAttribute="leading" secondItem="KSU-p5-ECU" secondAttribute="leading" constant="20" id="QIr-TQ-Amz"/>
                             <constraint firstItem="QBs-gz-wRc" firstAttribute="top" secondItem="KSU-p5-ECU" secondAttribute="top" constant="32" id="QN0-Ch-a2e"/>
-                            <constraint firstItem="RiC-jF-IgF" firstAttribute="top" secondItem="bQA-Cf-Cze" secondAttribute="bottom" constant="8" id="U2J-Z4-qU5"/>
-                            <constraint firstItem="0S4-k2-jmr" firstAttribute="bottom" secondItem="RiC-jF-IgF" secondAttribute="bottom" id="YPP-kH-rAa"/>
-                            <constraint firstItem="0S4-k2-jmr" firstAttribute="leading" secondItem="KSU-p5-ECU" secondAttribute="leading" constant="346" id="e9T-7L-Uqe"/>
-                            <constraint firstItem="wdX-yb-RgB" firstAttribute="leading" secondItem="KSU-p5-ECU" secondAttribute="leading" constant="132" id="gfX-tt-XPJ"/>
-                            <constraint firstItem="wdX-yb-RgB" firstAttribute="top" secondItem="RiC-jF-IgF" secondAttribute="bottom" constant="26" id="jDy-7m-zX0"/>
-                            <constraint firstItem="RiC-jF-IgF" firstAttribute="leading" secondItem="KSU-p5-ECU" secondAttribute="leading" constant="20" id="jEE-HY-xQj"/>
-                            <constraint firstItem="0S4-k2-jmr" firstAttribute="top" secondItem="bQA-Cf-Cze" secondAttribute="bottom" constant="224" id="jJe-Ox-03W"/>
-                            <constraint firstItem="KSU-p5-ECU" firstAttribute="trailing" secondItem="RiC-jF-IgF" secondAttribute="trailing" constant="20" id="nSO-Fg-F08"/>
-                            <constraint firstItem="wdX-yb-RgB" firstAttribute="bottom" secondItem="KSU-p5-ECU" secondAttribute="bottom" id="vEV-gQ-b1b"/>
+                            <constraint firstItem="wdX-yb-RgB" firstAttribute="top" secondItem="0S4-k2-jmr" secondAttribute="bottom" constant="26" id="TPZ-eM-muD"/>
+                            <constraint firstItem="KSU-p5-ECU" firstAttribute="trailing" secondItem="wdX-yb-RgB" secondAttribute="trailing" constant="132" id="epc-xI-6ZU"/>
+                            <constraint firstItem="wdX-yb-RgB" firstAttribute="leading" secondItem="KSU-p5-ECU" secondAttribute="leading" constant="132" id="gAO-5I-7Su"/>
+                            <constraint firstItem="dRz-UL-enm" firstAttribute="top" secondItem="QBs-gz-wRc" secondAttribute="bottom" constant="25" id="muM-uz-mhP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KSU-p5-ECU"/>
                     </view>

@@ -38,5 +38,12 @@ class AddPostsViewController: UIViewController {
     
     @IBAction func logoutBarButtonPressed(_ sender: UIBarButtonItem) {
         
+        let userDefults = UserDefaults.standard
+        userDefults.set(nil, forKey: "token")
+        
+        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as UIViewController
+        
+        self.present(viewController, animated: true, completion: nil)
+        
     }
 }

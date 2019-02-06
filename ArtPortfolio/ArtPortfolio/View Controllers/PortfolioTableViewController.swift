@@ -26,64 +26,68 @@ class PortfolioTableViewController: UITableViewController {
         super.viewDidLoad()
 
         
- //       fetchPosts()
+        fetchPosts()
      //   tableView.backgroundView = spinner
+        let userDefults = UserDefaults.standard
         
+        if userDefults.string(forKey: "token") != nil {
+            addBarButton.isEnabled = true
+        } else {
         
-        addBarButton.isEnabled = false
+            addBarButton.isEnabled = false
+        }
         
     }
 
-//
-//    func fetchPosts() {
-//      //  spinner.startAnimating()
-//        ProgressHUD.show("Fetching Data...", interaction: true)
-//        portfolioController.loadPosts { (error) in
-//            if error != nil {
-//                print(error!.localizedDescription)
-//            }
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//                ProgressHUD.showSuccess()
-//              //  self.spinner.stopAnimating()
-//            }
-//
-//        }
-//    }
-//
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//
-//        return portfolioController.artPortfolioUsers.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "portfolioCell", for: indexPath) as! PortfolioTableViewCell
-//
-//     let portfolio = portfolioController.artPortfolioUsers[indexPath.row]
-//
-//        cell.delegate = self
-//        cell.portfolio = portfolio
-//
-//
-//        return cell
-//    }
+
+    func fetchPosts() {
+      
+        ProgressHUD.show("Fetching Data...", interaction: true)
+        portfolioController.fetchPosts { (posts, error) in
+            if let error = error {
+                print("Error loading posts in Table VC: \(error)")
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                ProgressHUD.showSuccess()
+            }
+        }
+    }
+
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return portfolioController.posts.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "portfolioCell", for: indexPath) as! PortfolioTableViewCell
+
+     let portfolio = portfolioController.posts[indexPath.row]
+
+        cell.delegate = self
+        cell.portfolio = portfolio
+
+
+        return cell
+    }
 
     
-    // MARK: - Navigation
+   //  MARK: - Navigation
 
-//    // In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toDetailVC" {
-//            let destinationVC = segue.destination as? DetailViewController
-//            destinationVC?.portfolioController = portfolioController
-//            
-//         
-//            let portfolio = portfolioController.artPortfolioUsers[cellTappedIndex]
-//            
-//            destinationVC?.portfolio = portfolio
-//        }
-//    }
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            let destinationVC = segue.destination as? DetailViewController
+            destinationVC?.portfolioController = portfolioController
+            
+         
+            let portfolio = portfolioController.posts[cellTappedIndex]
+            
+            destinationVC?.portfolio = portfolio
+        }
+    }
   
    
     @IBAction func cancelBarButtonAction(_ sender: UIBarButtonItem) {

@@ -16,8 +16,6 @@ class PortfolioController {
     
     func registerUser(username: String, fullname: String, password: String, email: String?, userProfileImage: String?, completion: @escaping(Error?) -> Void){
         
-  //      let users = Users(username: username, fullname: fullname, userImage: nil, email: nil, password: password)
-        
 //        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
 //        let usernameItem = URLQueryItem(name: "username", value: username)
 //        let fullNameItem = URLQueryItem(name: "fullName", value: fullname)
@@ -33,7 +31,7 @@ class PortfolioController {
         guard let body = try? JSONEncoder().encode(params) else { return }
         var request = URLRequest(url: baseURL)
         
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPHelper.post.rawValue
         request.httpBody = body
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
     
@@ -65,7 +63,7 @@ class PortfolioController {
         guard let body = try? JSONEncoder().encode(params) else { return }
         var request = URLRequest(url: baseURL)
         
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPHelper.post.rawValue
         request.httpBody = body
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
         
@@ -80,15 +78,18 @@ class PortfolioController {
                 completion(error)
                 return
             }
-            
-            
+ 
             let decoder = JSONDecoder()
             
             do {
                 let users = try decoder.decode(UserLogin.self, from: data)
                 
+                //Save the token
                let userDefaults =  UserDefaults.standard
                 userDefaults.set(users.token, forKey: "token")
+                //Save the userID
+                userDefaults.set(users.id, forKey: "userId")
+
                 print(users)
                 
                 completion(nil)
@@ -140,7 +141,7 @@ class PortfolioController {
 
     }
     
-    func fetchPosts(completion: @escaping(Posts?, Error?) -> Void){
+    func fetchPosts(completion: @escaping([Posts]?, Error?) -> Void){
         
         let baseURL = URL(string: "https://backend-art.herokuapp.com/api/posts")!
         
@@ -166,8 +167,8 @@ class PortfolioController {
             let decoder = JSONDecoder()
             
             do {
-                let posts = try decoder.decode(Posts.self, from: data)
-                self.posts.append(posts)
+                let posts = try decoder.decode([Posts].self, from: data)
+                self.posts.append(contentsOf: posts)
                 print(posts)
                 completion(posts, nil)
             } catch {

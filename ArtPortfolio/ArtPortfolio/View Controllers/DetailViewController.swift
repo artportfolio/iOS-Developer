@@ -20,27 +20,39 @@ class DetailViewController: UIViewController {
     
     
     var portfolioController: PortfolioController?
-    var portfolio: Users?
+    var portfolio: Posts?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     //   updateViews()
-        editButton.isHidden = true
-        submitButtom.isHidden = true
+        updateViews()
+     //   editButton.isHidden = true
+    //    submitButtom.isHidden = true
         updateAppearance()
         
     }
     
-//    func updateViews() {
-//        guard let portfolios = portfolio else {return}
-//        
-//        artDescriptionTextView.text = portfolios.posts.postDescription
-//        
-//        guard let imageURL = URL(string: portfolios.posts.imageUrl), let imageData = try? Data(contentsOf: imageURL) else { return }
-//        
-//        artImageView.image = UIImage(data: imageData)
-//    }
+    func updateViews() {
+        guard let portfolios = portfolio else {return}
+        
+        titleTextField.text = portfolios.postName
+        
+        artDescriptionTextView.text = portfolios.description
+        
+        guard let imageURL = URL(string: portfolios.imageUrl), let imageData = try? Data(contentsOf: imageURL) else { return }
+        
+        artImageView.image = UIImage(data: imageData)
+        
+        let userDefaults = UserDefaults.standard
+        if portfolios.id == userDefaults.integer(forKey: "userId") {
+            editButton.isHidden = false
+            submitButtom.isHidden = false
+        } else {
+            editButton.isHidden = true
+            submitButtom.isHidden = true
+        }
+        
+    }
     
     func updateAppearance() {
         artImageView.layer.cornerRadius = 20
@@ -52,9 +64,14 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func editButtonPressed(_ sender: UIButton) {
+        
+        
+        
     }
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
+        
+        
     }
     
 }

@@ -18,6 +18,7 @@
 		7A09DF142209C1160043A1DD /* PortfolioCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF132209C1160043A1DD /* PortfolioCellDelegate.swift */; };
 		7A09DF172209F1AA0043A1DD /* AddPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF162209F1AA0043A1DD /* AddPostsViewController.swift */; };
 		7A09DF19220A546D0043A1DD /* UserLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF18220A546D0043A1DD /* UserLogin.swift */; };
+		7A09DF1B220B00070043A1DD /* HTTPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A09DF1A220B00060043A1DD /* HTTPHelper.swift */; };
 		7A74C590220890A700665E4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74C58F220890A700665E4A /* AppDelegate.swift */; };
 		7A74C597220890AB00665E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C596220890AB00665E4A /* Assets.xcassets */; };
 		7A74C59A220890AB00665E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A74C598220890AB00665E4A /* LaunchScreen.storyboard */; };
@@ -40,6 +41,7 @@
 		7A09DF152209D8160043A1DD /* ArtPortfolio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ArtPortfolio.entitlements; sourceTree = "<group>"; };
 		7A09DF162209F1AA0043A1DD /* AddPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostsViewController.swift; sourceTree = "<group>"; };
 		7A09DF18220A546D0043A1DD /* UserLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLogin.swift; sourceTree = "<group>"; };
+		7A09DF1A220B00060043A1DD /* HTTPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHelper.swift; sourceTree = "<group>"; };
 		7A74C58C220890A700665E4A /* ArtPortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArtPortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A74C58F220890A700665E4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A74C596220890AB00665E4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				7A09DF152209D8160043A1DD /* ArtPortfolio.entitlements */,
 				7A74C58F220890A700665E4A /* AppDelegate.swift */,
 				7A09DF092208AAEA0043A1DD /* AppearanceHelper.swift */,
+				7A09DF1A220B00060043A1DD /* HTTPHelper.swift */,
 				7A09DF132209C1160043A1DD /* PortfolioCellDelegate.swift */,
 				7A74C5C42208A41A00665E4A /* Model */,
 				7A09DF062208A8BF0043A1DD /* Model Controllers */,
@@ -299,6 +302,7 @@
 				7A09DF052208A8AE0043A1DD /* PortfolioController.swift in Sources */,
 				7A09DF0E2208CEF70043A1DD /* DetailViewController.swift in Sources */,
 				7A74C5CF2208A44500665E4A /* PortfolioTableViewCell.swift in Sources */,
+				7A09DF1B220B00070043A1DD /* HTTPHelper.swift in Sources */,
 				7A09DF19220A546D0043A1DD /* UserLogin.swift in Sources */,
 				7A74C590220890A700665E4A /* AppDelegate.swift in Sources */,
 			);
