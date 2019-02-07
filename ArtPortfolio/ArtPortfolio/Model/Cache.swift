@@ -10,6 +10,12 @@ import Foundation
 
 class Cache<Key: Hashable, Value> {
     
+    // Create a queue especially for Cache.
+    // So it makes Cache thread-safe to be shared between two different threads
+    
+    private var cache = [Key : Value]()
+    private let queue = DispatchQueue(label: "com.LambdaSchool.Astronomy.CacheQueue")
+    
     func cache(value: Value, for key: Key) {
         queue.async {
             self.cache[key] = value
@@ -26,6 +32,5 @@ class Cache<Key: Hashable, Value> {
         }
     }
     
-    private var cache = [Key : Value]()
-    private let queue = DispatchQueue(label: "com.LambdaSchool.Astronomy.CacheQueue")
+   
 }

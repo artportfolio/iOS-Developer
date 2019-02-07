@@ -71,6 +71,7 @@ class PortfolioTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "portfolioCell", for: indexPath) as! PortfolioTableViewCell
 
      let portfolio = portfolioController.posts[indexPath.row]
@@ -82,6 +83,7 @@ class PortfolioTableViewController: UITableViewController {
 
 
         return cell
+        
     }
 
     
@@ -103,7 +105,7 @@ class PortfolioTableViewController: UITableViewController {
    
     @IBAction func cancelBarButtonAction(_ sender: UIBarButtonItem) {
        // dismiss(animated: true)
-        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as UIViewController
+        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeNavBar") as UIViewController
   
         self.present(viewController, animated: true, completion: nil)
     }

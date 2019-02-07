@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -26,6 +27,10 @@ class LoginViewController: UIViewController {
         viewAppearance()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     private func viewAppearance(){
         loginLabel.textColor = .textColor
         loginLabel.font = AppearanceHelper.applicationFont(with: .headline, pointSize: 15)
@@ -43,6 +48,7 @@ class LoginViewController: UIViewController {
         portfolioController.login(username: username, password: password) { (error) in
             if let error = error {
                 print("ERROR:: \(error)")
+                ProgressHUD.showError(error.localizedDescription)
                 return
             }
             DispatchQueue.main.async {
@@ -51,7 +57,7 @@ class LoginViewController: UIViewController {
                 self.present(viewController, animated: true, completion: nil)
             }
           
-            print("Logged in..")
+            
         }
         
     }

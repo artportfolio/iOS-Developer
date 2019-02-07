@@ -24,6 +24,10 @@ class SecondLoginViewController: UIViewController {
        viewAppearance()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     private func viewAppearance(){
         introLabel.textColor = .textColor
         introLabel.font = AppearanceHelper.applicationFont(with: .headline, pointSize: 15)
