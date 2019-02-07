@@ -70,7 +70,7 @@ class PortfolioTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "portfolioCell", for: indexPath) as! PortfolioTableViewCell
 
         cell.selectionStyle = .none
-     let portfolio = portfolioController.posts[indexPath.row]
+        let portfolio = portfolioController.posts[indexPath.row]
 
        
         cell.delegate = self
@@ -129,25 +129,27 @@ extension PortfolioTableViewController: ThumbsupCellDelegate {
     
     func tappedThumbsUp(on cell: PortfolioTableViewCell) {
         ProgressHUD.show("Upvoting...", interaction: true)
-
-        voteNumber += 1
+        
+        //        voteNumber += 1
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-    
+        
         let posts = portfolioController.posts[indexPath.row]
+        var upvoteValue = posts.upvotes
+        upvoteValue += 1
+        portfolioController.updateUpvoteValue(of: posts)
         
-        
-        portfolioController.upVotePost(postId: posts.id, upvote: voteNumber) { (error) in
+        portfolioController.upVotePost(postId: posts.id, upvote: upvoteValue) { (error) in
             if let error = error {
                 print("Error upvoting: \(error.localizedDescription)")
             }
             
             DispatchQueue.main.async {
                 self.tableView.reloadRows(at: [indexPath], with: .none)
-               ProgressHUD.showSuccess()
-                self.fetchPosts()
+                ProgressHUD.showSuccess()
+                //                self.fetchPosts()
             }
         }
-       
+        
     }
-
+    
 }

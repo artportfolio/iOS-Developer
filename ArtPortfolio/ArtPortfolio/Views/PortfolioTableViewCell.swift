@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PortfolioTableViewCell: UITableViewCell {
     
@@ -33,14 +34,13 @@ class PortfolioTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-       
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-       //  portfolioImageView.image = nil
+         portfolioImageView.image = nil
         thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)
-        portfolioController?.cache.clear()
+     //   portfolioController?.cache.clear()
     }
     
     func updateViews() {
@@ -52,21 +52,16 @@ class PortfolioTableViewCell: UITableViewCell {
         portfolioImageView.layer.cornerRadius = 10
         portfolioImageView.layer.borderColor = .imageBorderColor
         portfolioImageView.layer.borderWidth = 1
-        
+
         if let image = portfolioController?.cache.value(for: portfolio.id) {
+            self.portfolioImageView.image = image
+        } else {
             portfolioController?.fetchImage(for: portfolio, completion: { (image) in
-                            DispatchQueue.main.async {
-                                self.portfolioImageView.image = image
-                            }
-                        })
-           // self.portfolioImageView.image = image
+                DispatchQueue.main.async {
+                    self.portfolioImageView.image = image
+                }
+            })
         }
-        
-//        portfolioController?.fetchImage(for: portfolio, completion: { (image) in
-//            DispatchQueue.main.async {
-//                self.portfolioImageView.image = image
-//            }
-//        })
         
         if portfolio.upvotes == 0 {
             thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)

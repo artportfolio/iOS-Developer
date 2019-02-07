@@ -10,10 +10,12 @@ import UIKit
 
 class PortfolioController {
     
-     var cache = Cache<Int, UIImage>()
+    var cache = Cache<Int, UIImage>()
     
     private(set) var users: [Users] = []
-    private(set) var posts: [Posts] = []
+    private(set) var posts: [Posts] = [] {
+        didSet { cache.clear() }
+    }
     private(set) var postUpdate: [PostUpdate] = []
     private let baseURL = URL(string: "https://backend-art.herokuapp.com/api/register")!
     
@@ -21,19 +23,26 @@ class PortfolioController {
         posts.removeAll()
     }
     
+    func updateUpvoteValue(of post: Posts) {
+        guard let index = posts.index(of: post) else { return }
+        var upvoteValue = post.upvotes
+        upvoteValue += 1
+        posts[index].upvotes = upvoteValue
+    }
+    
     func registerUser(username: String, fullname: String, password: String, email: String?, userProfileImage: String?, completion: @escaping(Error?) -> Void){
         
-//        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-//        let usernameItem = URLQueryItem(name: "username", value: username)
-//        let fullNameItem = URLQueryItem(name: "fullName", value: fullname)
-//        let passwordItem = URLQueryItem(name: "password", value: password)
-//
-//
-//        urlComponents?.queryItems = [usernameItem, fullNameItem, passwordItem]
-     //   let newURL = baseURL.appendingPathComponent("?username=\(username)&fullName=\(fullname)&password=\(password)")
+        //        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        //        let usernameItem = URLQueryItem(name: "username", value: username)
+        //        let fullNameItem = URLQueryItem(name: "fullName", value: fullname)
+        //        let passwordItem = URLQueryItem(name: "password", value: password)
+        //
+        //
+        //        urlComponents?.queryItems = [usernameItem, fullNameItem, passwordItem]
+        //   let newURL = baseURL.appendingPathComponent("?username=\(username)&fullName=\(fullname)&password=\(password)")
         let params = ["username": username, "fullName": fullname, "password": password]
-      //  let body = "username=\(username)&fullName=\(fullname)&password=\(password)"
-      //  guard let urlComponentsUW = urlComponents?.url else {return}
+        //  let body = "username=\(username)&fullName=\(fullname)&password=\(password)"
+        //  guard let urlComponentsUW = urlComponents?.url else {return}
         
         guard let body = try? JSONEncoder().encode(params) else { return }
         var request = URLRequest(url: baseURL)
@@ -41,7 +50,7 @@ class PortfolioController {
         request.httpMethod = HTTPHelper.post.rawValue
         request.httpBody = body
         request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-    
+        
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print("Error getting shared data task: \(error)")
@@ -54,9 +63,9 @@ class PortfolioController {
             }
             
             completion(nil)
-
             
-        }.resume()
+            
+            }.resume()
         
     }
     
@@ -85,18 +94,18 @@ class PortfolioController {
                 completion(error)
                 return
             }
- 
+            
             let decoder = JSONDecoder()
             
             do {
                 let user = try decoder.decode(UserLogin.self, from: data)
                 
                 //Save the token
-               let userDefaults =  UserDefaults.standard
+                let userDefaults =  UserDefaults.standard
                 userDefaults.set(user.token, forKey: "token")
                 //Save the userID
                 userDefaults.set(user.id, forKey: "userId")
-
+                
                 print(user)
                 
                 completion(nil)
@@ -104,16 +113,16 @@ class PortfolioController {
                 print("Error decoding: \(error)")
                 completion(error)
             }
- 
+            
             }.resume()
     }
- 
+    
     
     func fetchUserInfo(completion: @escaping(Users?, Error?) -> Void){
         
         let baseURL = URL(string: "https://backend-art.herokuapp.com/api/login")!
         
-       let request = URLRequest(url: baseURL)
+        let request = URLRequest(url: baseURL)
         
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -135,7 +144,7 @@ class PortfolioController {
             let decoder = JSONDecoder()
             
             do {
-              let users = try decoder.decode(Users.self, from: data)
+                let users = try decoder.decode(Users.self, from: data)
                 self.users.append(users)
                 print(users)
                 completion(users, nil)
@@ -144,8 +153,8 @@ class PortfolioController {
                 completion(nil, error)
             }
             
-        }.resume()
-
+            }.resume()
+        
     }
     
     func fetchPosts(completion: @escaping([Posts]?, Error?) -> Void){
@@ -175,7 +184,7 @@ class PortfolioController {
             
             do {
                 let posts = try decoder.decode([Posts].self, from: data)
-                self.posts.append(contentsOf: posts)
+                self.posts = posts
                 print("POSTS: \(posts)")
                 completion(posts, nil)
             } catch {
@@ -217,8 +226,8 @@ class PortfolioController {
                 print("Response from request: \(response)")
                 completion(nil)
             }
-      
-        }.resume()
+            
+            }.resume()
     }
     
     
@@ -246,7 +255,7 @@ class PortfolioController {
                 completion(nil)
             }
             
-        }.resume()
+            }.resume()
     }
     
     func editPostWith(id: Int, postName: String?, imageUrl: String?, description: String?, completion: @escaping(Error?) -> Void){
@@ -335,6 +344,7 @@ class PortfolioController {
         
         if let image = cache.value(for: post.id) {
             completion(image)
+            return
         } else {
             
             guard let urlString = post.imageUrl,
@@ -356,5 +366,6 @@ class PortfolioController {
                 }.resume()
         }
     }
-   
+    
 }
+
