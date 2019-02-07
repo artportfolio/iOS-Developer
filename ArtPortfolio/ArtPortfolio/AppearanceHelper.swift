@@ -21,6 +21,7 @@ enum AppearanceHelper {
 
 //        UIBarButtonItem.appearance().tintColor = lambdaRed
 //        UISegmentedControl.appearance().tintColor = lambdaRed
+    
         
   //      UILabel.appearance().textColor = .textColor
         

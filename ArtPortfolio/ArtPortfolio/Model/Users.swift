@@ -8,42 +8,28 @@
 
 import Foundation
 
-struct Users: Codable {
-   
-    var uid: Int
-    var email: String
-    var userName: String
-    let posts: Post
-    
-    enum CodingKeys: String, CodingKey {
-        case uid, email, posts
-        case userName = "username"
-    }
-   
-}
-
-struct Post: Codable {
-    let postId: Int
-    let postDescription: String
-    let imageUrl: String
-    let date: String
-    let likes: Int
-    
-    
-    enum CodingKeys: String, CodingKey {
-        case date
-        case postId = "postid"
-        case postDescription = "description"
-        case imageUrl = "image_url"
-        case likes = "Likes"
-    }
-}
-
-//This is the real User Object; Above one is dummy one.
-struct User: Equatable, Codable {
-    var id: Int
+struct Users: Equatable, Codable {
+  //  var id: Int
     var userName: String
     var fullName: String
     var userImgUrl: String?
     var email: String?
+    var password: String
+    
+        enum CodingKeys: String, CodingKey {
+            case userImgUrl, email
+            case userName = "username"
+            case fullName = "fullName"
+            case password = "password"
+        }
+    
+    init(username: String, fullname: String, userImage: String?, email: String?, password: String){
+       self.userName = username
+        self.fullName = fullname
+        self.userImgUrl = userImage
+        self.email = email
+        self.password = password
+    }
 }
+
+

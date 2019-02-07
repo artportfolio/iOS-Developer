@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class SignupViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class SignupViewController: UIViewController {
     
     @IBOutlet weak var signUpButton: UIButton!
     
+    var userController = PortfolioController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +39,30 @@ class SignupViewController: UIViewController {
 
    
     @IBAction func signupButtonPressed(_ sender: UIButton) {
+        
+        
+            guard let username = usernameTextField.text, !username.isEmpty, let fullname = fullNameTextField.text, !fullname.isEmpty, let password = passwordTextField.text, !password.isEmpty else {return}
+            
+            //Signup code
+
+        userController.registerUser(username: username, fullname: fullname, password: password, email: emailTextField.text, userProfileImage: nil) { (error) in
+            if let error = error {
+                print(error)
+            }
+            
+            ProgressHUD.showSuccess()
+            
+            DispatchQueue.main.async {
+                let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondLoginVC") as UIViewController
+                
+                self.present(viewController, animated: true, completion: nil)
+           
+            }
+            
+            print("Registered OK")
+        }
+        
+       
     }
     
 }

@@ -19,8 +19,11 @@ class PortfolioTableViewCell: UITableViewCell {
     @IBOutlet weak var thumbsUpButton: UIButton!
     
     weak var delegate: PortfolioCellDelegate?
+    weak var thumbsupDelegate: ThumbsupCellDelegate?
     
-    var portfolio: Users? {
+    var portfolioController: PortfolioController?
+    
+    var portfolio: Posts? {
         didSet {
             updateViews()
         }
@@ -28,24 +31,35 @@ class PortfolioTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+       
+    }
+    
+    override func prepareForReuse() {
+         portfolioImageView.image = nil
+        thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)
     }
     
     func updateViews() {
         guard let portfolio = portfolio else {return}
-        
-        titleLabel.text = portfolio.posts.postDescription
-        numberOfLikesLabel.text = String(portfolio.posts.likes)
-        guard let imageUrl = URL(string: portfolio.posts.imageUrl), let imageData = try? Data(contentsOf: imageUrl) else {return}
-        portfolioImageView.image = UIImage(data: imageData)
+
+        titleLabel.text = portfolio.postName
+        numberOfLikesLabel.text = String(portfolio.upvotes)
+    
         portfolioImageView.layer.cornerRadius = 10
         portfolioImageView.layer.borderColor = .imageBorderColor
         portfolioImageView.layer.borderWidth = 1
+        portfolioController?.fetchImage(for: portfolio, completion: { (image) in
+            DispatchQueue.main.async {
+                self.portfolioImageView.image = image
+            }
+        })
     }
 
     
     @IBAction func thumbsUpButtonPressed(_ sender: UIButton) {
         print("Button Pressed!")
+        thumbsupDelegate?.tappedThumbsUp(on: self)
     }
     
     @IBAction func readMoreButtonTapped(_ sender: UIButton) {

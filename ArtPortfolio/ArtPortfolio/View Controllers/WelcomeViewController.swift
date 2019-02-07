@@ -9,7 +9,7 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
+
     @IBOutlet weak var signInLabel: UILabel!
     
     @IBOutlet weak var loginButton: UIButton!
@@ -29,9 +29,9 @@ class WelcomeViewController: UIViewController {
   
 
     private func appearance() {
-        titleLabel.textColor = .textColor
+       
         signInLabel.textColor = .textColor
-        titleLabel.font = AppearanceHelper.applicationFont(with: .headline, pointSize: 60)
+      
         signInLabel.font = AppearanceHelper.applicationFont(with: .body, pointSize: 15)
         
         AppearanceHelper.style(button: loginButton)
