@@ -7,6 +7,5 @@ target 'ArtPortfolio' do
 
   # Pods for ArtPortfolio
 pod 'ProgressHUD'
-pod 'SDWebImage'
 
 end
