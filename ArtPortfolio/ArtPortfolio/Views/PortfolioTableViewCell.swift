@@ -39,7 +39,7 @@ class PortfolioTableViewCell: UITableViewCell {
         super.prepareForReuse()
          portfolioImageView.image = nil
         thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)
-     //   portfolioController?.cache.clear()
+     
     }
     
     func updateViews() {

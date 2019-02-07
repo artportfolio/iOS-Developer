@@ -31,19 +31,9 @@ class PortfolioController {
     }
     
     func registerUser(username: String, fullname: String, password: String, email: String?, userProfileImage: String?, completion: @escaping(Error?) -> Void){
-        
-        //        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
-        //        let usernameItem = URLQueryItem(name: "username", value: username)
-        //        let fullNameItem = URLQueryItem(name: "fullName", value: fullname)
-        //        let passwordItem = URLQueryItem(name: "password", value: password)
-        //
-        //
-        //        urlComponents?.queryItems = [usernameItem, fullNameItem, passwordItem]
-        //   let newURL = baseURL.appendingPathComponent("?username=\(username)&fullName=\(fullname)&password=\(password)")
+       
         let params = ["username": username, "fullName": fullname, "password": password]
-        //  let body = "username=\(username)&fullName=\(fullname)&password=\(password)"
-        //  guard let urlComponentsUW = urlComponents?.url else {return}
-        
+      
         guard let body = try? JSONEncoder().encode(params) else { return }
         var request = URLRequest(url: baseURL)
         

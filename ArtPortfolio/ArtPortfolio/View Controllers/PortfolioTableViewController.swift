@@ -15,7 +15,7 @@ class PortfolioTableViewController: UITableViewController {
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
     var cellTappedIndex = 0
-    var voteNumber = 0
+
     
     var portfolioController = PortfolioController()
     
@@ -78,7 +78,7 @@ class PortfolioTableViewController: UITableViewController {
        
         cell.portfolio = portfolio
         cell.portfolioController = portfolioController
-
+cell.updateViews()
 
         return cell
         
@@ -128,9 +128,8 @@ extension PortfolioTableViewController: ThumbsupCellDelegate {
     
     
     func tappedThumbsUp(on cell: PortfolioTableViewCell) {
-        ProgressHUD.show("Upvoting...", interaction: true)
+       
         
-        //        voteNumber += 1
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         
         let posts = portfolioController.posts[indexPath.row]
@@ -145,8 +144,7 @@ extension PortfolioTableViewController: ThumbsupCellDelegate {
             
             DispatchQueue.main.async {
                 self.tableView.reloadRows(at: [indexPath], with: .none)
-                ProgressHUD.showSuccess()
-                //                self.fetchPosts()
+              
             }
         }
         
