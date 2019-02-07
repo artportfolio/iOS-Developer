@@ -19,16 +19,10 @@ class PortfolioTableViewController: UITableViewController {
     
     var portfolioController = PortfolioController()
     
-//    let spinner = UIActivityIndicatorView(style: .gray)
-    
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-  //      fetchPosts()
-     //   tableView.backgroundView = spinner
+  
         let userDefults = UserDefaults.standard
         
         if userDefults.string(forKey: "token") != nil {
@@ -73,10 +67,12 @@ class PortfolioTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "portfolioCell", for: indexPath) as! PortfolioTableViewCell
 
+        cell.selectionStyle = .none
      let portfolio = portfolioController.posts[indexPath.row]
 
         cell.delegate = self
         cell.thumbsupDelegate = self
+       
         cell.portfolio = portfolio
         cell.portfolioController = portfolioController
 
@@ -98,6 +94,7 @@ class PortfolioTableViewController: UITableViewController {
             let portfolio = portfolioController.posts[cellTappedIndex]
             
             destinationVC?.portfolio = portfolio
+        
         }
     }
   
@@ -125,6 +122,8 @@ extension PortfolioTableViewController: PortfolioCellDelegate {
 }
 
 extension PortfolioTableViewController: ThumbsupCellDelegate {
+    
+    
     func tappedThumbsUp(on cell: PortfolioTableViewCell) {
         ProgressHUD.show("Upvoting...", interaction: true)
 
@@ -132,6 +131,8 @@ extension PortfolioTableViewController: ThumbsupCellDelegate {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
     
         let posts = portfolioController.posts[indexPath.row]
+        
+        
         portfolioController.upVotePost(postId: posts.id, upvote: voteNumber) { (error) in
             if let error = error {
                 print("Error upvoting: \(error.localizedDescription)")
@@ -144,7 +145,7 @@ extension PortfolioTableViewController: ThumbsupCellDelegate {
                 ProgressHUD.showSuccess()
             }
         }
+       
     }
-   
-    
+
 }

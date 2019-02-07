@@ -356,7 +356,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0GL-Qb-u4K">
                                             <rect key="frame" x="5" y="210.5" width="404" height="30"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-3G-RkB">
+                                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gR-3G-RkB">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Zam-hd-RrD"/>
@@ -367,13 +367,16 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVo-nj-Gf7">
-                                                    <rect key="frame" x="58" y="0.0" width="18" height="30"/>
+                                                    <rect key="frame" x="58" y="0.0" width="238" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08k-rC-Mr1">
-                                                    <rect key="frame" x="84" y="0.0" width="320" height="30"/>
+                                                    <rect key="frame" x="304" y="0.0" width="100" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="0RS-uA-ibJ"/>
+                                                    </constraints>
                                                     <state key="normal" title="Learn More..."/>
                                                     <connections>
                                                         <action selector="readMoreButtonTapped:" destination="8Nv-E8-vHA" eventType="touchUpInside" id="KgR-OV-mpw"/>

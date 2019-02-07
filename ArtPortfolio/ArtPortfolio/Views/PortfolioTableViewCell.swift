@@ -20,9 +20,10 @@ class PortfolioTableViewCell: UITableViewCell {
     
     weak var delegate: PortfolioCellDelegate?
     weak var thumbsupDelegate: ThumbsupCellDelegate?
+
     
     var portfolioController: PortfolioController?
-    
+    var senderTag = 10
     var portfolio: Posts? {
         didSet {
             updateViews()
@@ -64,8 +65,9 @@ class PortfolioTableViewCell: UITableViewCell {
 
     
     @IBAction func thumbsUpButtonPressed(_ sender: UIButton) {
-        print("Button Pressed!")
+      
         thumbsupDelegate?.tappedThumbsUp(on: self)
+          
     }
     
     @IBAction func readMoreButtonTapped(_ sender: UIButton) {
