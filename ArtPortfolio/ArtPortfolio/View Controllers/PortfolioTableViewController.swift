@@ -78,6 +78,7 @@ class PortfolioTableViewController: UITableViewController {
         cell.delegate = self
         cell.thumbsupDelegate = self
         cell.portfolio = portfolio
+        cell.portfolioController = portfolioController
 
 
         return cell

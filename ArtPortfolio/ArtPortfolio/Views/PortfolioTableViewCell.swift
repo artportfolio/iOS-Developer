@@ -21,6 +21,8 @@ class PortfolioTableViewCell: UITableViewCell {
     weak var delegate: PortfolioCellDelegate?
     weak var thumbsupDelegate: ThumbsupCellDelegate?
     
+    var portfolioController: PortfolioController?
+    
     var portfolio: Posts? {
         didSet {
             updateViews()
@@ -43,14 +45,15 @@ class PortfolioTableViewCell: UITableViewCell {
 
         titleLabel.text = portfolio.postName
         numberOfLikesLabel.text = String(portfolio.upvotes)
-        guard let image = portfolio.imageUrl else {return}
-        guard let imageUrl = URL(string: image), let imageData = try? Data(contentsOf: imageUrl) else {return}
-        portfolioImageView.image = UIImage(data: imageData)
     
         portfolioImageView.layer.cornerRadius = 10
         portfolioImageView.layer.borderColor = .imageBorderColor
         portfolioImageView.layer.borderWidth = 1
-       
+        portfolioController?.fetchImage(for: portfolio, completion: { (image) in
+            DispatchQueue.main.async {
+                self.portfolioImageView.image = image
+            }
+        })
     }
 
     

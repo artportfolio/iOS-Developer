@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Posts: Equatable, Codable {
+struct Posts: Equatable, Hashable, Codable {
     var postName: String
     var imageUrl: String?
     var upvotes: Int

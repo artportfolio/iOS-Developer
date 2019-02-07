@@ -6,9 +6,11 @@
 //  Copyright © 2019 Nelson Gonzalez. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PortfolioController {
+    
+     var cache = Cache<Posts, UIImage>()
     
     private(set) var users: [Users] = []
     private(set) var posts: [Posts] = []
@@ -327,6 +329,32 @@ class PortfolioController {
             }
             
             }.resume()
+    }
+    
+    func fetchImage(for post: Posts, completion: @escaping (UIImage?) -> Void) {
+        
+        if let image = cache.value(for: post) {
+            completion(image)
+        } else {
+            
+            guard let urlString = post.imageUrl,
+                let url = URL(string: urlString) else { completion(nil); return }
+            
+            URLSession.shared.dataTask(with: url) { (data, _, error) in
+                
+                if let error = error {
+                    print("Error fetching image: \(error)")
+                    completion(nil)
+                }
+                
+                guard let data = data,
+                    let image = UIImage(data: data) else { completion(nil); return }
+                
+                self.cache.cache(value: image, for: post)
+                
+                completion(image)
+                }.resume()
+        }
     }
    
 }
