@@ -10,7 +10,7 @@ import UIKit
 
 class PortfolioController {
     
-     var cache = Cache<Posts, UIImage>()
+     var cache = Cache<Int, UIImage>()
     
     private(set) var users: [Users] = []
     private(set) var posts: [Posts] = []
@@ -333,7 +333,7 @@ class PortfolioController {
     
     func fetchImage(for post: Posts, completion: @escaping (UIImage?) -> Void) {
         
-        if let image = cache.value(for: post) {
+        if let image = cache.value(for: post.id) {
             completion(image)
         } else {
             
@@ -350,7 +350,7 @@ class PortfolioController {
                 guard let data = data,
                     let image = UIImage(data: data) else { completion(nil); return }
                 
-                self.cache.cache(value: image, for: post)
+                self.cache.cache(value: image, for: post.id)
                 
                 completion(image)
                 }.resume()

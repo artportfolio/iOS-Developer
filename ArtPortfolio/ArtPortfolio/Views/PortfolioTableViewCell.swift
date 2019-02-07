@@ -37,8 +37,10 @@ class PortfolioTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-         portfolioImageView.image = nil
+        super.prepareForReuse()
+       //  portfolioImageView.image = nil
         thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)
+        portfolioController?.cache.clear()
     }
     
     func updateViews() {
@@ -50,11 +52,21 @@ class PortfolioTableViewCell: UITableViewCell {
         portfolioImageView.layer.cornerRadius = 10
         portfolioImageView.layer.borderColor = .imageBorderColor
         portfolioImageView.layer.borderWidth = 1
-        portfolioController?.fetchImage(for: portfolio, completion: { (image) in
-            DispatchQueue.main.async {
-                self.portfolioImageView.image = image
-            }
-        })
+        
+        if let image = portfolioController?.cache.value(for: portfolio.id) {
+            portfolioController?.fetchImage(for: portfolio, completion: { (image) in
+                            DispatchQueue.main.async {
+                                self.portfolioImageView.image = image
+                            }
+                        })
+           // self.portfolioImageView.image = image
+        }
+        
+//        portfolioController?.fetchImage(for: portfolio, completion: { (image) in
+//            DispatchQueue.main.async {
+//                self.portfolioImageView.image = image
+//            }
+//        })
         
         if portfolio.upvotes == 0 {
             thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)

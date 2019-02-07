@@ -32,12 +32,14 @@ class PortfolioTableViewController: UITableViewController {
             addBarButton.isEnabled = false
         }
         
+        fetchPosts()
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        fetchPosts()
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(true)
+//        fetchPosts()
+//    }
 
 
     func fetchPosts() {
@@ -70,6 +72,7 @@ class PortfolioTableViewController: UITableViewController {
         cell.selectionStyle = .none
      let portfolio = portfolioController.posts[indexPath.row]
 
+       
         cell.delegate = self
         cell.thumbsupDelegate = self
        
@@ -139,10 +142,9 @@ extension PortfolioTableViewController: ThumbsupCellDelegate {
             }
             
             DispatchQueue.main.async {
-                
                 self.tableView.reloadRows(at: [indexPath], with: .none)
+               ProgressHUD.showSuccess()
                 self.fetchPosts()
-                ProgressHUD.showSuccess()
             }
         }
        
