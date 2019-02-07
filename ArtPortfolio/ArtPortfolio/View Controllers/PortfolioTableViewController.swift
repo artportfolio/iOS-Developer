@@ -43,7 +43,6 @@ class PortfolioTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         fetchPosts()
-        tableView.reloadData()
     }
 
 

@@ -54,6 +54,12 @@ class PortfolioTableViewCell: UITableViewCell {
                 self.portfolioImageView.image = image
             }
         })
+        
+        if portfolio.upvotes == 0 {
+            thumbsUpButton.setImage(UIImage(named: "like"), for: .normal)
+        } else {
+            thumbsUpButton.setImage(UIImage(named: "likeFilled"), for: .normal)
+        }
     }
 
     

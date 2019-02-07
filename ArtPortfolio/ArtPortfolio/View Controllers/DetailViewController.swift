@@ -9,7 +9,7 @@
 import UIKit
 import ProgressHUD
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate , UITextViewDelegate {
     @IBOutlet weak var artImageView: UIImageView!
     
     @IBOutlet weak var artDescriptionTextView: UITextView!
@@ -33,10 +33,25 @@ class DetailViewController: UIViewController {
         updateViews()
      
         updateAppearance()
+    
+        titleTextField.delegate = self
+        artDescriptionTextView.delegate = self
         
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            artDescriptionTextView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     func updateViews() {
@@ -78,6 +93,7 @@ class DetailViewController: UIViewController {
         editButton.setTitleColor(.textColor, for: .normal)
         deleteButton.layer.cornerRadius = 8
         deleteButton.setTitleColor(.textColor, for: .normal)
+        artDescriptionTextView.keyboardAppearance = .dark
     }
 
     @IBAction func editButtonPressed(_ sender: UIButton) {

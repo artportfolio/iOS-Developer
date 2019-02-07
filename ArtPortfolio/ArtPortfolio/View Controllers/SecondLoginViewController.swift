@@ -9,7 +9,7 @@
 import UIKit
 import ProgressHUD
 
-class SecondLoginViewController: UIViewController {
+class SecondLoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var introLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     
@@ -22,10 +22,16 @@ class SecondLoginViewController: UIViewController {
         super.viewDidLoad()
 
        viewAppearance()
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     private func viewAppearance(){

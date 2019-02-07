@@ -9,7 +9,7 @@
 import UIKit
 import ProgressHUD
 
-class AddPostsViewController: UIViewController, UITextViewDelegate {
+class AddPostsViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var postImageView: UIImageView!
     
@@ -36,12 +36,24 @@ class AddPostsViewController: UIViewController, UITextViewDelegate {
        postDescriptionTextView.delegate = self
       postDescriptionTextView.text = "Please write a description for you post here ..."
       
+        postTitleTextField.delegate = self
+        imageUrlTextField.delegate = self
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            postDescriptionTextView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     
     func setApparance(){
         postDescriptionTextView.font = AppearanceHelper.applicationFont(with: .body, pointSize: 15)
@@ -53,16 +65,18 @@ class AddPostsViewController: UIViewController, UITextViewDelegate {
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
+        if postDescriptionTextView.text == "Please write a description for you post here ..." {
             postDescriptionTextView.text = nil
-        
+        }
         }
    
- 
-    func textViewDidEndEditing(_ textView: UITextView) {
 
-        postDescriptionTextView.text = "Please write a description for you post here ..."
-  
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if postTitleTextField.text == nil {
+            postDescriptionTextView.text = "Please write a description for you post here ..."
+        }
+        
+
 }
   
     @IBAction func postButtonPressed(_ sender: UIButton) {
