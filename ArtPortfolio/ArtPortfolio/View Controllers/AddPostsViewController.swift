@@ -9,7 +9,7 @@
 import UIKit
 import ProgressHUD
 
-class AddPostsViewController: UIViewController, UITextViewDelegate {
+class AddPostsViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var postImageView: UIImageView!
     
@@ -36,37 +36,51 @@ class AddPostsViewController: UIViewController, UITextViewDelegate {
        postDescriptionTextView.delegate = self
       postDescriptionTextView.text = "Please write a description for you post here ..."
       
+        postTitleTextField.delegate = self
+        imageUrlTextField.delegate = self
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            postDescriptionTextView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     
     func setApparance(){
         postDescriptionTextView.font = AppearanceHelper.applicationFont(with: .body, pointSize: 15)
         postDescriptionTextView.textColor = .textColor
         postImageView.layer.cornerRadius = 10
         AppearanceHelper.style(button: postButton)
+        postDescriptionTextView.keyboardAppearance = .dark
         
     }
 
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
+        if postDescriptionTextView.text == "Please write a description for you post here ..." {
             postDescriptionTextView.text = nil
-        
+        }
         }
    
- 
+
     func textViewDidEndEditing(_ textView: UITextView) {
-    
-   
+        if postTitleTextField.text == nil {
+            postDescriptionTextView.text = "Please write a description for you post here ..."
+        }
         
-        postDescriptionTextView.text = "Please write a description for you post here ..."
-    
+
 }
   
     @IBAction func postButtonPressed(_ sender: UIButton) {
-        //with image
-//        guard let postTitle = postTitleTextField.text, !postTitle.isEmpty, let description = postDescriptionTextView.text, !description.isEmpty, let profileImg = self.selectedImage, let imageData = profileImg.jpegData(compressionQuality: 0.1) else { return }
-        
-        
+
         if let postTitle = postTitleTextField.text, !postTitle.isEmpty {
             portfolioController.createPostsWith(postName: postTitle, imageUrl: imageUrlTextField.text ?? nil, description: postDescriptionTextView.text ?? nil) { (error) in
                 if let error = error {
@@ -80,22 +94,6 @@ class AddPostsViewController: UIViewController, UITextViewDelegate {
  
             }
         }
-     //   let imageString = imageData.base64EncodedString()
-        
-        
-        
-//        portfolioController.createPostsWith(postName: postTitle, imageUrl: imageUrl, description: description) { (error) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//                ProgressHUD.showError(error.localizedDescription)
-//            }
-//            ProgressHUD.showSuccess()
-//            DispatchQueue.main.async {
-//                self.clearView()
-//            }
-//
-//
-//        }
         
     }
     
@@ -113,7 +111,7 @@ class AddPostsViewController: UIViewController, UITextViewDelegate {
         userDefults.set(nil, forKey: "token")
         userDefults.set(nil, forKey: "userId")
         
-        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeViewController") as UIViewController
+        let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WelcomeNavBar") as UIViewController
         
         self.present(viewController, animated: true, completion: nil)
         

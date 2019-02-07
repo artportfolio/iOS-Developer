@@ -9,7 +9,7 @@
 import UIKit
 import ProgressHUD
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var profilePictureImageView: UIImageView!
     
@@ -28,8 +28,23 @@ class SignupViewController: UIViewController {
         super.viewDidLoad()
 
         viewAppearance()
+        usernameTextField.delegate = self
+        fullNameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
     
     private func viewAppearance(){
         AppearanceHelper.style(button: signUpButton)

@@ -34,7 +34,7 @@ enum AppearanceHelper {
         //  UIView.appearance(whenContainedInInstancesOf: [UITableView.self]).backgroundColor = backgroundGray
         
         UITextField.appearance().keyboardAppearance = .dark
-    
+ 
        //  UITextView.appearance().backgroundColor = .textViewBackgroundColor
        // UITextField.appearance().tintColor = .navBarTintColor
        // UITextView.appearance().tintColor = .navBarTintColor

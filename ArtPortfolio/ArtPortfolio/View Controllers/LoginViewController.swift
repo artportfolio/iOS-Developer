@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ProgressHUD
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -24,6 +25,16 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewAppearance()
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     private func viewAppearance(){
@@ -43,6 +54,7 @@ class LoginViewController: UIViewController {
         portfolioController.login(username: username, password: password) { (error) in
             if let error = error {
                 print("ERROR:: \(error)")
+                ProgressHUD.showError(error.localizedDescription)
                 return
             }
             DispatchQueue.main.async {
@@ -51,7 +63,7 @@ class LoginViewController: UIViewController {
                 self.present(viewController, animated: true, completion: nil)
             }
           
-            print("Logged in..")
+            
         }
         
     }
